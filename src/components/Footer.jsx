@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 sm:px-6 lg:px-8">
@@ -13,9 +13,9 @@ const Footer = () => (
         <div>
           <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2">
-            <li><span className="text-gray-400 hover:text-white transition duration-300 text-sm nav-link cursor-pointer" onClick={() => window.scrollTo(0,0)}>Home</span></li>
-            <li><span className="text-gray-400 hover:text-white transition duration-300 text-sm nav-link cursor-pointer" onClick={() => window.scrollTo(0,0)}>Quiz</span></li>
-            <li><span className="text-gray-400 hover:text-white transition duration-300 text-sm nav-link cursor-pointer" onClick={() => window.scrollTo(0,0)}>About</span></li>
+            <li><Link to="/" className="text-gray-400 hover:text-white transition duration-300 text-sm">Home</Link></li>
+            <li><Link to="/quiz" className="text-gray-400 hover:text-white transition duration-300 text-sm">Quiz</Link></li>
+            <li><Link to="/about" className="text-gray-400 hover:text-white transition duration-300 text-sm">About</Link></li>
           </ul>
         </div>
         <div>
@@ -52,4 +52,4 @@ const Footer = () => (
   </footer>
 );
 
-export default Footer; 
+export default Footer;
