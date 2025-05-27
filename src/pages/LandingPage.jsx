@@ -1,4 +1,4 @@
-import BlueCTASection from "../components/BlueCTASection";
+import CTAButton from "../components/CTAButton";
 import FinalCTASection from "../components/FinalCTASection";
 import FourDimensionsSection from "../components/FourDimensionsSection";
 import FourStylesSection from "../components/FourStylesSection";
@@ -7,14 +7,19 @@ import IntroCardsSection from "../components/IntroCardsSection";
 import WhyUnderstandingSection from "../components/WhyUnderstandingSection";
 
 const LandingPage = () => (
-  <div className="min-h-screen bg-gray-50 flex flex-col items-center">
+  <div className="bg-gray-50 flex flex-col items-center">
     <HeroSection />
     <IntroCardsSection />
-    <BlueCTASection />
+    <div className="text-center mb-20">
+      <CTAButton to="/quiz">Take the Quiz Now</CTAButton>
+    </div>
     <WhyUnderstandingSection />
+    <FourDimensionsSection />
+    <div className="text-center mb-20">
+      <CTAButton to="/quiz">Discover My Communication Style</CTAButton>
+    </div>
     <FourStylesSection />
     <FinalCTASection />
-    <FourDimensionsSection />
   </div>
 );
 

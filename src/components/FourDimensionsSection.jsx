@@ -6,22 +6,10 @@ const styleCards = [
 		title: 'Verbal Communication',
 		subtitle: 'What you say and how you express ideas',
 		details: [
-			{
-				icon: 'fas fa-microphone-alt',
-				text: 'Speaking patterns and word choice',
-			},
-			{
-				icon: 'fas fa-pen-nib',
-				text: 'Writing style and precision',
-			},
-			{
-				icon: 'fas fa-ear-listen',
-				text: 'Listening and comprehension approach',
-			},
-			{
-				icon: 'fas fa-book',
-				text: 'Information processing preferences',
-			},
+			{ icon: 'fas fa-microphone-alt', text: 'Speaking patterns and word choice' },
+			{ icon: 'fas fa-pen-nib', text: 'Writing style and precision' },
+			{ icon: 'fas fa-ear-listen', text: 'Listening and comprehension approach' },
+			{ icon: 'fas fa-book', text: 'Information processing preferences' },
 		],
 		bg: 'bg-yellow-100',
 	},
@@ -30,22 +18,10 @@ const styleCards = [
 		title: 'Paraverbal Communication',
 		subtitle: 'How you deliver your message',
 		details: [
-			{
-				icon: 'fas fa-volume-up',
-				text: 'Volume and tone variations',
-			},
-			{
-				icon: 'fas fa-bolt',
-				text: 'Speaking pace and rhythm',
-			},
-			{
-				icon: 'fas fa-theater-masks',
-				text: 'Vocal inflection and emotion',
-			},
-			{
-				icon: 'fas fa-landmark',
-				text: 'Formality level in speech',
-			},
+			{ icon: 'fas fa-volume-up', text: 'Volume and tone variations' },
+			{ icon: 'fas fa-bolt', text: 'Speaking pace and rhythm' },
+			{ icon: 'fas fa-theater-masks', text: 'Vocal inflection and emotion' },
+			{ icon: 'fas fa-landmark', text: 'Formality level in speech' },
 		],
 		bg: 'bg-blue-100',
 	},
@@ -54,22 +30,10 @@ const styleCards = [
 		title: 'Body Language',
 		subtitle: 'Non-verbal expression and presence',
 		details: [
-			{
-				icon: 'fas fa-eye',
-				text: 'Eye contact and facial expressions',
-			},
-			{
-				icon: 'fas fa-hands',
-				text: 'Gestures and hand movements',
-			},
-			{
-				icon: 'fas fa-person-walking',
-				text: 'Posture and body positioning',
-			},
-			{
-				icon: 'fas fa-hand-paper',
-				text: 'Physical touch preferences',
-			},
+			{ icon: 'fas fa-eye', text: 'Eye contact and facial expressions' },
+			{ icon: 'fas fa-hands', text: 'Gestures and hand movements' },
+			{ icon: 'fas fa-person-walking', text: 'Posture and body positioning' },
+			{ icon: 'fas fa-hand-paper', text: 'Physical touch preferences' },
 		],
 		bg: 'bg-green-100',
 	},
@@ -78,29 +42,17 @@ const styleCards = [
 		title: 'Personal Space',
 		subtitle: 'Environment and spatial preferences',
 		details: [
-			{
-				icon: 'fas fa-briefcase',
-				text: 'Workspace organization style',
-			},
-			{
-				icon: 'fas fa-ruler-horizontal',
-				text: 'Physical distance preferences',
-			},
-			{
-				icon: 'fas fa-image',
-				text: 'Personal item display choices',
-			},
-			{
-				icon: 'fas fa-laptop',
-				text: 'Virtual environment setup',
-			},
+			{ icon: 'fas fa-briefcase', text: 'Workspace organization style' },
+			{ icon: 'fas fa-ruler-horizontal', text: 'Physical distance preferences' },
+			{ icon: 'fas fa-image', text: 'Personal item display choices' },
+			{ icon: 'fas fa-laptop', text: 'Virtual environment setup' },
 		],
 		bg: 'bg-red-100',
 	},
 ];
 
 const FourDimensionsSection = () => (
-	<section className="w-full max-w-5xl px-4 mb-20">
+	<section className="w-full max-w-5xl px-4 mb-10">
 		<div className="mb-10">
 			<h3 className="text-4xl font-bold text-gray-900 text-center">
 				Four Dimensions of{' '}

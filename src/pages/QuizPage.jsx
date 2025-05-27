@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import quizData from '../data/quiz';
 
@@ -64,7 +64,7 @@ const QuizPage = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-10 min-h-screen flex flex-col">
+    <div className="py-10 flex flex-col">
       <h2 className="text-4xl font-bold mb-6 text-center text-gray-900">Communication Style Quiz</h2>
       <div className="max-w-2xl mx-auto mb-8">
         <h3 className="text-3xl font-bold mb-2 text-gray-900">{currentCategory.category}</h3>

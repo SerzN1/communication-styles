@@ -1,7 +1,7 @@
 import CTAButton from "./CTAButton";
 
 const FinalCTASection = () => (
-  <section className="w-full max-w-3xl mx-auto text-center mb-20">
+  <section className="w-full max-w-3xl mx-auto text-center mb-20 px-4">
     <div className="bg-white rounded-2xl p-10 shadow-lg border-4 border-blue-500">
       <h3 className="text-3xl font-bold text-gray-900 mb-4">
         Ready to Discover Your Communication Style?
@@ -10,7 +10,7 @@ const FinalCTASection = () => (
         Take our comprehensive assessment and unlock insights about how you
         naturally communicate.
       </p>
-      <div className="flex justify-center gap-8 mb-10">
+      <div className="flex flex-col sm:flex-row justify-center gap-8 mb-10">
         <div className="text-center">
           <div className="text-4xl font-bold text-yellow-500">4</div>
           <div className="text-base text-gray-600 uppercase tracking-wider">
@@ -30,9 +30,7 @@ const FinalCTASection = () => (
           </div>
         </div>
       </div>
-      <CTAButton to="/quiz" data-discover="true">
-        Begin Assessment
-      </CTAButton>
+      <CTAButton to="/quiz">Begin Assessment</CTAButton>
     </div>
   </section>
 );

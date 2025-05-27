@@ -29,9 +29,9 @@ const fourStyles = [
 
 const FourStylesSection = () => (
   <section className="w-full max-w-5xl px-4 mb-20">
-    <h2 class="text-4xl font-bold text-gray-900 mb-10 text-center">
+    <h3 class="text-4xl font-bold text-gray-900 mb-10 text-center">
       The Four Main <span class="text-blue-600">Communication Styles</span>
-    </h2>
+    </h3>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {fourStyles.map((card) => (
         <Card key={card.title}>

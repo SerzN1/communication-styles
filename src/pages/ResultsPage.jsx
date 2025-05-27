@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const styleDescriptions = {
@@ -54,7 +54,7 @@ const ResultsPage = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-12 min-h-screen flex flex-col items-center justify-center bg-white">
+    <div className="py-12 flex flex-col items-center justify-center bg-white">
       <h2 className="text-4xl font-bold mb-8 text-center text-gray-900">My Results</h2>
       <div className="w-full max-w-3xl mx-auto">
         {winners.length === 0 ? (
