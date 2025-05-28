@@ -1,4 +1,4 @@
-import { Card, H1, H2 } from './toolkit';
+import { Card, H2 } from '../toolkit';
 
 const whyCards = [
   {

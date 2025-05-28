@@ -1,27 +1,39 @@
 export const styleMeta = {
-  yellow: {
-    color: 'text-yellow-600',
-    label: 'Yellow',
-    accent: '#facc15',
-    iconClass: 'fas fa-bolt text-yellow-400',
+  blue: {
+    color: 'text-blue-600',
+    label: 'Blue',
+    accent: '#3b82f6',
+    icon: 'fas fa-chart-line text-blue-600',
+    bg: 'bg-blue-100',
+    title: 'Analytical',
+    desc: 'Precise, logical, and data-driven. Analyticals value accuracy and tend to be systematic thinkers who prefer facts over emotions.',
   },
   red: {
     color: 'text-red-600',
     label: 'Red',
     accent: '#ef4444',
-    iconClass: 'fas fa-fire text-red-500',
+    icon: 'fas fa-tachometer-alt text-red-600',
+    bg: 'bg-red-100',
+    title: 'Driver',
+    desc: 'Direct, results-oriented, and decisive. Drivers are focused on outcomes and efficiency, often taking charge of situations.',
   },
   green: {
     color: 'text-green-600',
     label: 'Green',
     accent: '#22c55e',
-    iconClass: 'fas fa-leaf text-green-500',
+    icon: 'fas fa-hands-helping text-green-600',
+    bg: 'bg-green-100',
+    title: 'Amiable',
+    desc: 'Supportive, patient, and relationship-focused. Amiables value harmony and cooperation, often putting others\' needs first.',
   },
-  blue: {
-    color: 'text-blue-600',
-    label: 'Blue',
-    accent: '#3b82f6',
-    iconClass: 'fas fa-water text-blue-500',
+  yellow: {
+    color: 'text-yellow-600',
+    label: 'Yellow',
+    accent: '#facc15',
+    icon: 'fas fa-lightbulb text-yellow-600',
+    bg: 'bg-yellow-100',
+    title: 'Expressive',
+    desc: 'Enthusiastic, creative, and outgoing. Expressives are big-picture thinkers who enjoy brainstorming and social interaction.',
   }
 };
 

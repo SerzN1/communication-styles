@@ -17,7 +17,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <Card className="md:p-8 mb-8">
+      <Card className="lg:p-8 mb-8">
         <CardTitle>Our Mission</CardTitle>
         <p className="text-gray-600 mb-6">
           At CommStyle, our mission is to empower individuals and organizations to communicate more effectively. We believe that understanding your <strong>communication style</strong> is the key to building stronger relationships, improving teamwork, and achieving professional growth.
@@ -28,7 +28,7 @@ const AboutPage = () => {
       </Card>
 
       <div className="grid md:grid-cols-2 gap-8 mb-8">
-        <Card className="md:p-8">
+        <Card className="lg:p-8">
           <CardTitle>The Science Behind It</CardTitle>
           <p className="text-gray-600 mb-4">
             Our <strong>communication style assessment</strong> is based on the widely recognized four-style communication model, building on the work of psychologists like Carl Jung and William Moulton Marston. This model has been adapted and refined through decades of practical application in business and counseling settings.
@@ -38,7 +38,7 @@ const AboutPage = () => {
           </p>
         </Card>
 
-        <Card className="md:p-8">
+        <Card className="lg:p-8">
           <CardTitle>How It Works</CardTitle>
           <p className="text-gray-600 mb-4">
             The assessment consists of 20 carefully designed questions that measure your natural communication preferences across four dimensions:
@@ -55,7 +55,7 @@ const AboutPage = () => {
         </Card>
       </div>
 
-      <Card className="md:p-8">
+      <Card className="lg:p-8">
         <CardTitle>Meet The Team</CardTitle>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
@@ -79,7 +79,7 @@ const AboutPage = () => {
         </div>
       </Card>
 
-      <div className="mt-8 text-center">
+      <div className="mt-12 text-center">
         <a href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 nav-link">
           <i className="fas fa-home mr-2"></i> Back to Home
         </a>

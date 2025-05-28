@@ -1,34 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardTitle, H1 } from '../components/toolkit';
 import { assessementData, styleMeta } from '../data/quiz';
+import { shuffleArray } from '../utils';
+
+// Restore state from localStorage if present
+const getStoredData = () => {
+  const stored = localStorage.getItem('quizIntermediate');
+  if (stored) {
+    try {
+      const { mode, step, answers } = JSON.parse(stored);
+      return {
+        mode: mode || 'intro',
+        step: step ?? 0,
+        answers: new Set(answers || []),
+      };
+    } catch {
+      return { mode: 'intro', step: 0, answers: new Set() };
+    }
+  }
+  if (localStorage.getItem('quizResults')) {
+    return { mode: 'results', step: 0, answers: new Set() };
+  }
+  return { mode: 'intro', step: 0, answers: new Set() };
+};
 
 
 const QuizPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Restore state from localStorage if present
-  const getStoredData = () => {
-    const stored = localStorage.getItem('quizIntermediate');
-    if (stored) {
-      try {
-        const { mode, step, answers } = JSON.parse(stored);
-        return {
-          mode: mode || 'intro',
-          step: step ?? 0,
-          answers: new Set(answers || []),
-        };
-      } catch {
-        return { mode: 'intro', step: 0, answers: new Set() };
-      }
-    }
-    if (localStorage.getItem('quizResults')) {
-      return { mode: 'results', step: 0, answers: new Set() };
-    }
-    return { mode: 'intro', step: 0, answers: new Set() };
-  };
 
   const storedData = getStoredData();
   const [mode, setMode] = useState(() => storedData.mode);
@@ -39,6 +40,7 @@ const QuizPage = () => {
   const total = assessementData.length;
   const percent = Math.round((step / total) * 100);
   const { category = '', description = '', options = [] } = assessementData[step] || {};
+  const shuffledOptions = useMemo(() => shuffleArray(options), [options]);
 
   // Persist intermediate state
   useEffect(() => {
@@ -101,145 +103,148 @@ const QuizPage = () => {
   };
 
   return (
-      <section id="quiz" className="page mx-auto">
-        <div className="text-center mb-8">
-          <H1>
-            Communication Style <span className="text-blue-600">Assessment</span>
-          </H1>
-          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            Answer these questions honestly to discover your dominant communication style.
-          </p>
+    <section id="quiz" className="page mx-auto">
+      <div className="text-center mb-8">
+        <H1>
+          Communication Style <span className="text-blue-600">Assessment</span>
+        </H1>
+        <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+          Answer these questions honestly to discover your dominant communication style.
+        </p>
+      </div>
+
+      <Card className='max-w-3xl m-auto'>
+        <div className="mb-6">
+          <div className="flex justify-between mb-1">
+            <span className="text-sm font-medium text-gray-700">Progress</span>
+            <span className="text-sm font-medium text-gray-700">
+              {mode === 'quiz' ? `${percent}%` : "0%"}
+            </span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2.5">
+            <div
+              className="progress-bar bg-blue-600 h-2.5 rounded-full"
+              style={{ width: mode === 'quiz' ? `${percent}%` : "0%" }}
+            ></div>
+          </div>
         </div>
 
-        <Card>
-          <div className="mb-6">
-            <div className="flex justify-between mb-1">
-              <span className="text-sm font-medium text-gray-700">Progress</span>
-              <span className="text-sm font-medium text-gray-700">
-                {mode === 'quiz' ? `${percent}%` : "0%"}
-              </span>
+        {mode === 'results' ? (
+          <div className="text-center py-8" id="restart-screen">
+            <div className="mb-6">
+              <i className="fas fa-check-circle text-green-500 text-5xl"></i>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div
-                className="progress-bar bg-blue-600 h-2.5 rounded-full"
-                style={{ width: mode === 'quiz' ? `${percent}%` : "0%" }}
-              ></div>
-            </div>
-          </div>
-
-          {mode === 'results' ? (
-            <div className="text-center py-8" id="restart-screen">
-              <div className="mb-6">
-                <i className="fas fa-check-circle text-green-500 text-5xl"></i>
-              </div>
-              <CardTitle>You've already completed the assessment.</CardTitle>
-              <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-                Would you like to start the assessment again?
-              </p>
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={handleRestart}
-                  className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-lg hover:bg-yellow-600 transition duration-300"
-                >
-                  Start Assessment Again
-                </button>
-                <button
-                  onClick={handleShowResults}
-                  className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
-                >
-                  My Results
-                </button>
-              </div>
-            </div>
-          ) : mode === 'intro' ? (
-            <div className="text-center py-8" id="intro-screen">
-              <div className="mb-6">
-                <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                Ready to Discover Your Communication Style?
-              </h3>
-              <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-                This assessment consists of {total} sections. There are no right or wrong answers - just select the option that best describes your natural tendencies.
-              </p>
+            <CardTitle>You've already completed the assessment.</CardTitle>
+            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+              Would you like to start the assessment again?
+            </p>
+            <div className="flex justify-center gap-4">
               <button
-                onClick={handleStart}
-                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+                onClick={handleRestart}
+                className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-lg hover:bg-yellow-600 transition duration-300 cursor-pointer"
               >
-                Start Assessment
+                Start Assessment Again
+              </button>
+              <button
+                onClick={handleShowResults}
+                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
+              >
+                My Results
               </button>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <CardTitle>
-                {category}
-              </CardTitle>
-              <p className='mb-10'>{description}</p>
-              <div className="space-y-3">
-                {options.map((item, idx) => {
-                  const { color, option } = item;
-                  const key = `${category}|${color}|${option}`;
-                  return (
-                    <div key={key} className="flex items-center gap-4">
-                      <input
-                        id={key}
-                        type="checkbox"
-                        checked={answers.has(key)}
-                        onChange={() => handleChange(category, color, option)}
-                        className="hidden"
-                      />
-                      <label
-                        htmlFor={key}
-                        className={`flex-1 cursor-pointer px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
-                          ${answers.has(key) ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
-                        `}
-                        style={{ accentColor: styleMeta[color].accent }}
-                      >
-                        <span className={`mr-3 inline-block w-7 h-7 rounded border-2 border-gray-300 align-middle text-center ${answers.has(key) ? `${styleMeta[color].color} ring-2 ring-blue-400 bg-blue-50` : ""}`}>
-                          {answers.has(key) ? (
-                            <i className="fas fa-check text-lg flex items-center justify-center h-full w-full"></i>
-                          ) : (
-                            <span className="sr-only">Select</span>
-                          )}
-                        </span>
-                        <span>{option}</span>
-                      </label>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="mt-8 flex justify-between">
+          </div>
+        ) : mode === 'intro' ? (
+          <div className="text-center py-8" id="intro-screen">
+            <div className="mb-6">
+              <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Ready to Discover Your Communication Style?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+              This assessment consists of {total} sections. There are no right or wrong answers - just select the option that best describes your natural tendencies.
+            </p>
+            <button
+              onClick={handleStart}
+              className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
+            >
+              Start Assessment
+            </button>
+          </div>
+        ) : (
+          // Only show the current step's form, not all at once
+          <form onSubmit={handleSubmit}>
+            <CardTitle>
+              {category}
+            </CardTitle>
+            <p className='mb-10'>{description}</p>
+            <div className="space-y-3">
+              {shuffledOptions.map((item) => {
+                const { color, option } = item;
+                const key = `${category}|${color}|${option}`;
+                return (
+                  <div key={key} className="flex items-center gap-4">
+                    <input
+                      id={key}
+                      type="checkbox"
+                      checked={answers.has(key)}
+                      onChange={() => handleChange(category, color, option)}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor={key}
+                      className={`flex-1 cursor-pointer px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
+                        ${answers.has(key) ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
+                      `}
+                      // style={{ accentColor: styleMeta[color].accent }}
+                    >
+                      <span className={`mr-3 inline-block w-7 h-7 rounded border-2 border-gray-300 align-middle text-center ${answers.has(key) ? `${styleMeta[color].color} ring-2 ring-blue-400 bg-blue-50` : ""}`}>
+                        {answers.has(key) ? (
+                          <i className="fas fa-check text-lg flex items-center justify-center h-full w-full"></i>
+                        ) : (
+                          <span className="sr-only">Select</span>
+                        )}
+                      </span>
+                      <span>{option}</span>
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="mt-8 flex justify-between">
+              <button
+                type="button"
+                onClick={handlePrev}
+                disabled={step === 0}
+                className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300 disabled:opacity-50 cursor-pointer"
+              >
+                <i className="fas fa-arrow-left mr-2"></i> Previous
+              </button>
+              {(step < total - 1) && (
                 <button
                   type="button"
-                  onClick={handlePrev}
-                  disabled={step === 0}
-                  className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300 disabled:opacity-50"
+                  onClick={handleNext}
+                  className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
                 >
-                  <i className="fas fa-arrow-left mr-2"></i> Previous
+                  Next <i className="fas fa-arrow-right ml-2"></i>
                 </button>
-                {(step < total - 1) && (
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
-                  >
-                    Next <i className="fas fa-arrow-right ml-2"></i>
-                  </button>
-                )}
+              )}
+              {step === total - 1 && (
                 <button
                   type="submit"
                   disabled={answers.size === 0}
                   className={`px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300 ${
                     answers.size === 0 ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  } cursor-pointer`}
                 >
                   Submit <i className="fas fa-paper-plane ml-2"></i>
                 </button>
-              </div>
-            </form>
-          )}
-        </Card>
-      </section>
+              )}
+            </div>
+          </form>
+        )}
+      </Card>
+    </section>
   );
 };
 

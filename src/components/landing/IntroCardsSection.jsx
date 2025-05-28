@@ -1,14 +1,14 @@
-import { Card, CardTitle } from "./toolkit";
+import { Card, CardTitle } from "../toolkit";
 
 {/* SEO SUGGESTIONS:
-          - Use "communication styles quiz" and "communication style assessment" in the first sentence.
-          - Mention "improve communication skills" and "workplace communication" for relevance.
-          - Add a call to action with "start your free communication assessment now".
-        */}
+  - Use "communication styles quiz" and "communication style assessment" in the first sentence.
+  - Mention "improve communication skills" and "workplace communication" for relevance.
+  - Add a call to action with "start your free communication assessment now".
+*/}
 
 const IntroCardsSection = () => (
   <section className="w-full max-w-5xl px-4 mb-10">
-    <Card className="p-8">
+    <Card>
       <CardTitle>Why Communication Styles Matter</CardTitle>
       <p className="text-gray-600 mb-6">
         Take our free <strong>communication styles quiz</strong> and <strong>communication style assessment</strong> to unlock your unique communication strengths.

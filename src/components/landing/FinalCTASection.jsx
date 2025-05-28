@@ -1,4 +1,4 @@
-import { Card, CTA } from "./toolkit";
+import { Card, CTA } from "../toolkit";
 
 const FinalCTASection = () => (
   <section className="w-full max-w-3xl mx-auto text-center mb-20 px-4">

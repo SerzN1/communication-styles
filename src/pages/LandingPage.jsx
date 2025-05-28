@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import FinalCTASection from "../components/FinalCTASection";
-import FourDimensionsSection from "../components/FourDimensionsSection";
-import FourStylesSection from "../components/FourStylesSection";
-import HeroSection from "../components/HeroSection";
-import IntroCardsSection from "../components/IntroCardsSection";
+import FinalCTASection from "../components/landing/FinalCTASection";
+import FourDimensionsSection from "../components/landing/FourDimensionsSection";
+import FourStylesSection from "../components/landing/FourStylesSection";
+import HeroSection from "../components/landing/HeroSection";
+import IntroCardsSection from "../components/landing/IntroCardsSection";
+import WhyUnderstandingSection from "../components/landing/WhyUnderstandingSection";
 import { CTA } from "../components/toolkit";
-import WhyUnderstandingSection from "../components/WhyUnderstandingSection";
 
 const LandingPage = () => {
   useEffect(() => {

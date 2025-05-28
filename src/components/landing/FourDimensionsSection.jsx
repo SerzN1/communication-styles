@@ -1,4 +1,4 @@
-import { Card, H2 } from './toolkit';
+import { Card, H2 } from '../toolkit';
 
 const styleCards = [
 	{
@@ -62,10 +62,7 @@ const FourDimensionsSection = () => (
 		</div>
 		<div className="grid md:grid-cols-2 gap-6">
 			{styleCards.map((card) => (
-				<Card
-					key={card.title}
-					className="style-card bg-white p-6 rounded-xl shadow-md"
-				>
+				<Card key={card.title}>
 					<div className={`mb-6 flex`}>
 						<div className={`${card.bg} inline-flex p-4 rounded-full mb-4`}>
 							<i className={`${card.icon} text-3xl`}></i>

@@ -1,4 +1,4 @@
-import { CTA } from "./toolkit";
+import { CTA } from "../toolkit";
 
 const BlueCTASection = () => (
   <div className="text-center mb-20">
