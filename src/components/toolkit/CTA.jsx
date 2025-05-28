@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const CTAButton = ({ to, children, className = '', ...props }) => (
+const CTA = ({ to, children, className = '', ...props }) => (
   <Link to={to} {...props}>
     <button
       className={
@@ -15,4 +15,4 @@ const CTAButton = ({ to, children, className = '', ...props }) => (
   </Link>
 );
 
-export default CTAButton;
+export default CTA;

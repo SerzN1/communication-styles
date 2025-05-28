@@ -1,4 +1,4 @@
-import Card from './Card';
+import { Card, H2 } from './toolkit';
 
 const styleCards = [
 	{
@@ -54,11 +54,8 @@ const styleCards = [
 const FourDimensionsSection = () => (
 	<section className="w-full max-w-5xl px-4 mb-10">
 		<div className="mb-10">
-			<h3 className="text-4xl font-bold text-gray-900 text-center">
-				Four Dimensions of{' '}
-				<span className="text-blue-600">Communication</span>
-			</h3>
-			<p className="mt-5 max-w-xl mx-auto text-xl text-gray-500 text-center">
+			<H2 className='text-4xl'>Four Dimensions of <span className="text-blue-600">Communication</span></H2>
+			<p className="mt-4 max-w-xl mx-auto text-xl text-gray-500 text-center">
 				Your communication style is shaped by how you express yourself across
 				these key areas:
 			</p>

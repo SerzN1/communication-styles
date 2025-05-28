@@ -1,4 +1,4 @@
-import Card from "./Card";
+import { Card, H1, H2 } from './toolkit';
 
 const whyCards = [
   {
@@ -29,9 +29,9 @@ const whyCards = [
 
 const WhyUnderstandingSection = () => (
   <section className="w-full max-w-5xl px-4 mb-20">
-    <h3 className="text-4xl font-bold text-gray-900 mb-10 text-center">
+    <H2 className="text-4xl mb-10">
       Why Understanding <span className="text-blue-600">Your Style</span> Matters
-    </h3>
+    </H2>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {whyCards.map((card) => (
         <Card key={card.title}>

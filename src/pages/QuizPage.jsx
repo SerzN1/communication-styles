@@ -1,138 +1,245 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import quizData from '../data/quiz';
+import { Card, CardTitle, H1 } from '../components/toolkit';
+import { assessementData, styleMeta } from '../data/quiz';
 
-const categoryDescriptions = {
-  Verbal: 'Verbal is connected to what you say, the way you express yourself. It is how we talk, write, listen, and read.',
-  Paraverbal: 'Paraverbal is how you say things, the way you talk. It is about tone, speed, and inflection.',
-  'Body language': 'Body language is how you express yourself without words. Examples are eye contact, body contact, movements, and facial expressions.',
-  'Personal space': 'Personal space is how you like the space around you – either sitting at your desk, working on the floor, or talking with others.',
-};
 
-const styleColors = {
-  yellow: 'text-yellow-600',
-  red: 'text-red-600',
-  green: 'text-green-600',
-  blue: 'text-blue-600',
-  orange: 'text-yellow-600', // for legacy data
-};
-
-const styleLabels = {
-  yellow: 'Yellow',
-  red: 'Red',
-  green: 'Green',
-  blue: 'Blue',
-  orange: 'Yellow',
-};
-
-const styleAccent = {
-  yellow: '#facc15',
-  red: '#ef4444',
-  green: '#22c55e',
-  blue: '#3b82f6',
-  orange: '#facc15',
-};
-
-const QuizPage = ({ onNavigate }) => {
-  const [answers, setAnswers] = useState({});
-  const [step, setStep] = useState(0);
-  const navigate = useNavigate();
-
+const QuizPage = () => {
   useEffect(() => {
-    localStorage.removeItem('quizResults');
+    window.scrollTo(0, 0);
   }, []);
 
-  const currentCategory = quizData[step];
+  // Restore state from localStorage if present
+  const getStoredData = () => {
+    const stored = localStorage.getItem('quizIntermediate');
+    if (stored) {
+      try {
+        const { mode, step, answers } = JSON.parse(stored);
+        return {
+          mode: mode || 'intro',
+          step: step ?? 0,
+          answers: new Set(answers || []),
+        };
+      } catch {
+        return { mode: 'intro', step: 0, answers: new Set() };
+      }
+    }
+    if (localStorage.getItem('quizResults')) {
+      return { mode: 'results', step: 0, answers: new Set() };
+    }
+    return { mode: 'intro', step: 0, answers: new Set() };
+  };
+
+  const storedData = getStoredData();
+  const [mode, setMode] = useState(() => storedData.mode);
+  const [step, setStep] = useState(() => storedData.step);
+  const [answers, setAnswers] = useState(() => storedData.answers);
+  const navigate = useNavigate();
+
+  const total = assessementData.length;
+  const percent = Math.round((step / total) * 100);
+  const { category = '', description = '', options = [] } = assessementData[step] || {};
+
+  // Persist intermediate state
+  useEffect(() => {
+    if (mode === 'quiz') {
+      localStorage.setItem(
+        'quizIntermediate',
+        JSON.stringify({ mode, step, answers: Array.from(answers) })
+      );
+    } else {
+      localStorage.removeItem('quizIntermediate');
+    }
+  }, [mode, step, answers]);
+
+  const handleStart = () => {
+    setMode('quiz');
+    setStep(0);
+    setAnswers(new Set());
+  };
 
   const handleChange = (category, color, option) => {
+    const key = `${category}|${color}|${option}`;
     setAnswers((prev) => {
-      const key = `${category}|${color}|${option}`;
-      return {
-        ...prev,
-        [key]: !prev[key],
-      };
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
     });
   };
 
-  const handleNext = () => setStep((s) => Math.min(s + 1, quizData.length - 1));
-  const handlePrev = () => setStep((s) => Math.max(s - 1, 0));
+  const handleNext = () => setStep((s) => Math.min(s + 1, total - 1));
+  const handlePrev = () => setStep((s) => Math.max(0, s - 1));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('quizResults', JSON.stringify({ answers }));
-    navigate('/results', { state: { answers } });
+    if (answers.size === 0) return;
+    const resultObj = { answers: Array.from(answers) };
+    localStorage.setItem('quizResults', JSON.stringify(resultObj));
+    localStorage.removeItem('quizIntermediate');
+    setMode('results');
+    navigate('/results', { state: resultObj });
+  };
+
+  const handleRestart = () => {
+    localStorage.removeItem('quizResults');
+    localStorage.removeItem('quizIntermediate');
+    setAnswers(new Set());
+    setStep(0);
+    setMode('quiz');
+  };
+
+  const handleShowResults = () => {
+    const stored = localStorage.getItem('quizResults');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      navigate('/results', { state: { answers: parsed.answers } });
+    }
   };
 
   return (
-    <div className="py-10 flex flex-col">
-      <h2 className="text-4xl font-bold mb-6 text-center text-gray-900">Communication Style Quiz</h2>
-      <div className="max-w-2xl mx-auto mb-8">
-        <h3 className="text-3xl font-bold mb-2 text-gray-900">{currentCategory.category}</h3>
-        <p className="text-xl text-gray-700">{categoryDescriptions[currentCategory.category]}</p>
-      </div>
-      <form onSubmit={handleSubmit} className="flex-1">
-        <div className="overflow-x-auto">
-          <table className="w-full border border-gray-200 rounded-xl bg-white text-lg">
-            <thead>
-              <tr className="bg-gray-100 text-gray-800">
-                <th className="py-4 px-2 font-bold">Style</th>
-                <th className="py-4 px-2 font-bold">Option</th>
-                <th className="py-4 px-2 font-bold">Select</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentCategory.styles.flatMap((style) =>
-                style.options.map((option, idx) => {
-                  const color = style.color === 'orange' ? 'yellow' : style.color;
-                  const key = `${currentCategory.category}|${style.color}|${option}`;
-                  return (
-                    <tr key={key} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className={`py-3 px-2 font-semibold ${styleColors[color]}`}>{styleLabels[color]}</td>
-                      <td className="py-3 px-2 text-gray-700">{option}</td>
-                      <td className="py-3 px-2 text-center">
-                        <input
-                          type="checkbox"
-                          checked={!!answers[key]}
-                          onChange={() => handleChange(currentCategory.category, style.color, option)}
-                          className={`w-7 h-7 rounded border-gray-300 focus:ring-2 transition ${styleColors[color]}`}
-                          style={{ accentColor: styleAccent[color] }}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+      <section id="quiz" className="page mx-auto">
+        <div className="text-center mb-8">
+          <H1>
+            Communication Style <span className="text-blue-600">Assessment</span>
+          </H1>
+          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            Answer these questions honestly to discover your dominant communication style.
+          </p>
         </div>
-        <div className="flex justify-between items-center mt-12 max-w-2xl mx-auto">
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={step === 0}
-            className={`px-16 py-7 rounded-2xl text-3xl font-extrabold shadow transition ${step === 0 ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-gray-700 text-white hover:bg-gray-900'}`}
-          >
-            Previous
-          </button>
-          {step < quizData.length - 1 ? (
-            <button
-              type="button"
-              onClick={handleNext}
-              className="bg-yellow-500 text-white px-16 py-7 rounded-2xl text-3xl font-extrabold shadow-lg hover:bg-yellow-600 transition"
-            >
-              Next
-            </button>
+
+        <Card>
+          <div className="mb-6">
+            <div className="flex justify-between mb-1">
+              <span className="text-sm font-medium text-gray-700">Progress</span>
+              <span className="text-sm font-medium text-gray-700">
+                {mode === 'quiz' ? `${percent}%` : "0%"}
+              </span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+              <div
+                className="progress-bar bg-blue-600 h-2.5 rounded-full"
+                style={{ width: mode === 'quiz' ? `${percent}%` : "0%" }}
+              ></div>
+            </div>
+          </div>
+
+          {mode === 'results' ? (
+            <div className="text-center py-8" id="restart-screen">
+              <div className="mb-6">
+                <i className="fas fa-check-circle text-green-500 text-5xl"></i>
+              </div>
+              <CardTitle>You've already completed the assessment.</CardTitle>
+              <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+                Would you like to start the assessment again?
+              </p>
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={handleRestart}
+                  className="px-6 py-3 bg-yellow-500 text-white font-medium rounded-lg hover:bg-yellow-600 transition duration-300"
+                >
+                  Start Assessment Again
+                </button>
+                <button
+                  onClick={handleShowResults}
+                  className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+                >
+                  My Results
+                </button>
+              </div>
+            </div>
+          ) : mode === 'intro' ? (
+            <div className="text-center py-8" id="intro-screen">
+              <div className="mb-6">
+                <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                Ready to Discover Your Communication Style?
+              </h3>
+              <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+                This assessment consists of {total} sections. There are no right or wrong answers - just select the option that best describes your natural tendencies.
+              </p>
+              <button
+                onClick={handleStart}
+                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+              >
+                Start Assessment
+              </button>
+            </div>
           ) : (
-            <button
-              type="submit"
-              className="bg-yellow-500 text-white px-16 py-7 rounded-2xl text-3xl font-extrabold shadow-lg hover:bg-yellow-600 transition"
-            >
-              Submit
-            </button>
+            <form onSubmit={handleSubmit}>
+              <CardTitle>
+                {category}
+              </CardTitle>
+              <p className='mb-10'>{description}</p>
+              <div className="space-y-3">
+                {options.map((item, idx) => {
+                  const { color, option } = item;
+                  const key = `${category}|${color}|${option}`;
+                  return (
+                    <div key={key} className="flex items-center gap-4">
+                      <input
+                        id={key}
+                        type="checkbox"
+                        checked={answers.has(key)}
+                        onChange={() => handleChange(category, color, option)}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor={key}
+                        className={`flex-1 cursor-pointer px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
+                          ${answers.has(key) ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
+                        `}
+                        style={{ accentColor: styleMeta[color].accent }}
+                      >
+                        <span className={`mr-3 inline-block w-7 h-7 rounded border-2 border-gray-300 align-middle text-center ${answers.has(key) ? `${styleMeta[color].color} ring-2 ring-blue-400 bg-blue-50` : ""}`}>
+                          {answers.has(key) ? (
+                            <i className="fas fa-check text-lg flex items-center justify-center h-full w-full"></i>
+                          ) : (
+                            <span className="sr-only">Select</span>
+                          )}
+                        </span>
+                        <span>{option}</span>
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-8 flex justify-between">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  disabled={step === 0}
+                  className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300 disabled:opacity-50"
+                >
+                  <i className="fas fa-arrow-left mr-2"></i> Previous
+                </button>
+                {(step < total - 1) && (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+                  >
+                    Next <i className="fas fa-arrow-right ml-2"></i>
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  disabled={answers.size === 0}
+                  className={`px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300 ${
+                    answers.size === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Submit <i className="fas fa-paper-plane ml-2"></i>
+                </button>
+              </div>
+            </form>
           )}
-        </div>
-      </form>
-    </div>
+        </Card>
+      </section>
   );
 };
 

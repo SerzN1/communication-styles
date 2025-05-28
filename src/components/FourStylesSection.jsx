@@ -1,4 +1,4 @@
-import Card from "./Card";
+import { Card, H2 } from './toolkit';
 
 const fourStyles = [
 	{
@@ -29,9 +29,9 @@ const fourStyles = [
 
 const FourStylesSection = () => (
   <section className="w-full max-w-5xl px-4 mb-20">
-    <h3 class="text-4xl font-bold text-gray-900 mb-10 text-center">
-      The Four Main <span class="text-blue-600">Communication Styles</span>
-    </h3>
+    <H2 className='text-4xl mb-10'>
+      The Four Main <span className="text-blue-600">Communication Styles</span>
+    </H2>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {fourStyles.map((card) => (
         <Card key={card.title}>
