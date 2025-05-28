@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BreakdownTable from "../components/results/BreakdownTable";
+import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from "../components/results/utils";
 import { Card, CardTitle, H1 } from "../components/toolkit";
-import { styleInfo, styleMeta } from "../data/quiz";
-import { getScores, getWinners } from "../utils";
+import { multiWinnersInfo, styleInfo, styleMeta } from "../data/quiz";
 
 function NoWinnersCard({ onGoToQuiz }) {
   return (
@@ -35,7 +35,7 @@ function NoWinnersCard({ onGoToQuiz }) {
 
 function SingleWinnerCard({ winner }) {
   const { icon, color, label } = styleMeta[winner] || {};
-  const { description, strengths, blindSpots, tips } = styleInfo[winner] || {};
+  const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};
   return (
     <div className="text-center mb-12">
       <H1 className="mb-12">
@@ -68,6 +68,18 @@ function SingleWinnerCard({ winner }) {
             ))}
           </ul>
         </Card>
+        <Card className="!bg-gray-50">
+          <CardTitle>
+            <i className="fas fa-user text-gray-500 mr-2"></i>How you see yourself
+          </CardTitle>
+          <p className="text-gray-700">{selfView}</p>
+        </Card>
+        <Card className="!bg-gray-50">
+          <CardTitle>
+            <i className="fas fa-users text-gray-500 mr-2"></i>How others may see you
+          </CardTitle>
+          <p className="text-gray-700">{othersView}</p>
+        </Card>
         <Card className="!bg-blue-50">
           <CardTitle>
             <i className="fas fa-lightbulb text-blue-400 mr-2"></i>Tips for Effective Communication
@@ -78,14 +90,13 @@ function SingleWinnerCard({ winner }) {
             ))}
           </ul>
         </Card>
+
         <Card className="!bg-yellow-50">
           <CardTitle>
             <i className="fas fa-user-md text-purple-500 mr-2"></i>Psychologist's Recommendation:
           </CardTitle>
           <p className="space-y-2 text-gray-700">
-            Embrace your strengths and be mindful of your blind spots.
-            Regularly seek feedback from trusted colleagues or friends to ensure your communication is both effective and empathetic.
-            Remember, the most impactful communicators are those who adapt and grow.
+            {recommendation}
           </p>
         </Card>
       </div>
@@ -104,9 +115,9 @@ function MultiWinnersCard({ winners }) {
         <span className="text-blue-600">Communication Style</span>
       </H1>
       <div className="mt-3 max-w-2xl mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-        You have a flexible communication profile and can shift between styles as needed.
-        This means you can adapt your approach based on the situation and audience.
-        This versatility is a strength in diverse teams and dynamic environments. People may perceive you as adaptable, diplomatic, and able to connect with a wide range of personalities.
+        {multiWinnersInfo.intro.map((line, i) => (
+          <span key={i}>{line}<br /></span>
+        ))}
       </div>
       <div className="mt-12 grid md:grid-cols-2 gap-8 text-left">
         {winners.map((style) => (
@@ -131,7 +142,7 @@ function MultiWinnersCard({ winners }) {
             </div>
           </Card>
         ))}
-        <Card className="bg-blue-50">
+        <Card className="!bg-blue-50">
           <CardTitle>
             <i className="fas fa-sync-alt text-purple-500 mr-2"></i>Adapting Your Communication
           </CardTitle>
@@ -148,7 +159,7 @@ function MultiWinnersCard({ winners }) {
             <i className="fas fa-user-md text-purple-500 mr-2"></i>Psychologist's Recommendation:
           </CardTitle>
           <p className="space-y-2 text-gray-700">
-            As someone with a balanced communication style, you have a unique ability to adapt and connect with many types of people. However, others may sometimes be unsure of your "true" style or intentions. To foster trust and clarity, consider sharing your thought process and motivations openly, especially when switching between styles. This transparency helps others feel secure and lets your adaptability shine as a strength, not a source of confusion.
+            {multiWinnersInfo.recommendation}
           </p>
         </Card>
       </div>
@@ -205,14 +216,17 @@ const ResultsPage = () => {
   };
 
   const downloadResults = () => {
-    const blob = new Blob(
-      [JSON.stringify({ answers, scores, winners }, null, 2)],
-      { type: "application/json" }
-    );
+    let text;
+    if (winners.length === 1) {
+      text = formatSingleWinnerText(winners[0], scores);
+    } else {
+      text = formatMultiWinnersText(winners, scores);
+    }
+    const blob = new Blob([text], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "communication-style-results.json";
+    a.download = "communication-style-results.txt";
     a.click();
     URL.revokeObjectURL(url);
   };

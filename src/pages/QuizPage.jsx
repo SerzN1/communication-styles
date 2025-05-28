@@ -1,30 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import QuizOption from '../components/quiz/QuizOption';
+import { getStoredData } from '../components/quiz/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
 import { assessementData, styleMeta } from '../data/quiz';
 import { shuffleArray } from '../utils';
-
-// Restore state from localStorage if present
-const getStoredData = () => {
-  const stored = localStorage.getItem('quizIntermediate');
-  if (stored) {
-    try {
-      const { mode, step, answers } = JSON.parse(stored);
-      return {
-        mode: mode || 'intro',
-        step: step ?? 0,
-        answers: new Set(answers || []),
-      };
-    } catch {
-      return { mode: 'intro', step: 0, answers: new Set() };
-    }
-  }
-  if (localStorage.getItem('quizResults')) {
-    return { mode: 'results', step: 0, answers: new Set() };
-  }
-  return { mode: 'intro', step: 0, answers: new Set() };
-};
-
 
 const QuizPage = () => {
   useEffect(() => {
@@ -73,8 +53,20 @@ const QuizPage = () => {
     });
   };
 
-  const handleNext = () => setStep((s) => Math.min(s + 1, total - 1));
-  const handlePrev = () => setStep((s) => Math.max(0, s - 1));
+  const handleNext = () => {
+    setStep((s) => {
+      const nextStep = Math.min(s + 1, total - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return nextStep;
+    });
+  };
+  const handlePrev = () => {
+    setStep((s) => {
+      const prevStep = Math.max(0, s - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return prevStep;
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -162,7 +154,7 @@ const QuizPage = () => {
               Ready to Discover Your Communication Style?
             </h3>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-              This assessment consists of {total} sections. There are no right or wrong answers - just select the option that best describes your natural tendencies.
+              This assessment consists of {total} sections representing different communication dimentions. There are no right or wrong answers - just select the option that best describes your natural tendencies.
             </p>
             <button
               onClick={handleStart}
@@ -183,31 +175,14 @@ const QuizPage = () => {
                 const { color, option } = item;
                 const key = `${category}|${color}|${option}`;
                 return (
-                  <div key={key} className="flex items-center gap-4">
-                    <input
-                      id={key}
-                      type="checkbox"
-                      checked={answers.has(key)}
-                      onChange={() => handleChange(category, color, option)}
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor={key}
-                      className={`flex-1 cursor-pointer px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
-                        ${answers.has(key) ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
-                      `}
-                      // style={{ accentColor: styleMeta[color].accent }}
-                    >
-                      <span className={`mr-3 inline-block w-7 h-7 rounded border-2 border-gray-300 align-middle text-center ${answers.has(key) ? `${styleMeta[color].color} ring-2 ring-blue-400 bg-blue-50` : ""}`}>
-                        {answers.has(key) ? (
-                          <i className="fas fa-check text-lg flex items-center justify-center h-full w-full"></i>
-                        ) : (
-                          <span className="sr-only">Select</span>
-                        )}
-                      </span>
-                      <span>{option}</span>
-                    </label>
-                  </div>
+                  <QuizOption
+                    key={key}
+                    id={key}
+                    checked={answers.has(key)}
+                    onChange={() => handleChange(category, color, option)}
+                    color={styleMeta[color].color}
+                    option={option}
+                  />
                 );
               })}
             </div>

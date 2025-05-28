@@ -60,19 +60,19 @@ const AboutPage = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-            <H3 className="font-semibold mmy-0">Dr. Johnson</H3>
+            <H3 className="font-semibold mmy-0">Dr. AI Victoria Johnson</H3>
             <p className="text-gray-600">Lead Psychologist</p>
             <p className="text-gray-500 text-sm mt-2">PhD in Communication Studies with 15 years of research experience</p>
           </div>
           <div className="text-center">
             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-            <H3>Michael Chen</H3>
+            <H3>Sergei No</H3>
             <p className="text-gray-600">Assessment Developer</p>
             <p className="text-gray-500 text-sm mt-2">Specializes in psychometrics and behavioral assessment design</p>
           </div>
           <div className="text-center">
             <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-            <H3>Emily Rodriguez</H3>
+            <H3>AI Anna Smith</H3>
             <p className="text-gray-600">User Experience</p>
             <p className="text-gray-500 text-sm mt-2">Ensures our tools are accessible and easy to use for everyone</p>
           </div>

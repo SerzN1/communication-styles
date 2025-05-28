@@ -133,13 +133,17 @@ export const styleInfo = {
       "Balance speed with thoroughness",
       "Ask for feedback to ensure clarity"
     ],
-    selfView: "You see yourself as a bold, results-driven communicator who values clarity and efficiency.",
-    othersView: "Others may see you as confident and direct, but sometimes too forceful or impatient.",
+    selfView:
+      "Describes oneself as an energetic, creative, and expressive communicator who thrives on sharing ideas, inspiring others, and bringing enthusiasm to every conversation. Values openness and enjoys connecting with people through lively dialogue and brainstorming.",
+    othersView:
+      "You are often perceived as enthusiastic, expressive, and inspiring. People may appreciate your energy and creativity, but sometimes see you as scattered or overly talkative. Channel your positivity while also making space for others’ input.",
     adapting: [
       "Practice patience and empathy when others need more time.",
       "Invite feedback to ensure your message is understood.",
       "Adjust your pace to match your audience."
-    ]
+    ],
+    recommendation:
+      "As an expressive communicator, channel your enthusiasm to inspire others, but remember to pause and listen. Practice summarizing your main points and invite quieter voices into the conversation. Your energy is a gift—use it to motivate, but also to build understanding.",
   },
   red: {
     description:
@@ -163,13 +167,17 @@ export const styleInfo = {
       "Be mindful of time and structure",
       "Summarize key points to ensure clarity"
     ],
-    selfView: "You see yourself as a passionate communicator who brings energy and excitement to interactions.",
-    othersView: "Others may see you as inspiring and engaging, but sometimes overwhelming or unfocused.",
+    selfView:
+      "Describes oneself as a decisive, results-oriented communicator who values clarity and efficiency. Confident in expressing opinions and taking the lead, striving to motivate others to achieve goals quickly and effectively.",
+    othersView:
+      "You may be seen as confident, assertive, and results-driven. Some may admire your decisiveness, while others could perceive you as direct or even a bit forceful. Remember, your drive can inspire, but balancing it with empathy will help others feel valued.",
     adapting: [
       "Listen actively and avoid interrupting.",
       "Use facts to support your enthusiasm.",
       "Adapt your energy to the context and audience."
-    ]
+    ],
+    recommendation:
+      "As a driver, your decisiveness and focus are invaluable. To maximize your impact, take time to consider others' perspectives and emotions. Balance your results-driven approach with empathy, and you'll foster both productivity and trust.",
   },
   green: {
     description:
@@ -193,13 +201,17 @@ export const styleInfo = {
       "Balance harmony with honest communication",
       "Be open to new approaches"
     ],
-    selfView: "You see yourself as a caring communicator who values connection and understanding.",
-    othersView: "Others may see you as empathetic and trustworthy, but sometimes too passive or hesitant.",
+    selfView:
+      "Describes oneself as a supportive, patient, and empathetic communicator who prioritizes harmony and understanding, and is attentive to the needs and feelings of others. Building strong, trusting relationships is important, and listening deeply before responding is a key trait.",
+    othersView:
+      "You are likely seen as supportive, patient, and a good listener. Others may feel comfortable and safe around you, but might also see you as reserved or hesitant to assert your own needs. Your calm presence is valued—just remember to share your own perspective too.",
     adapting: [
       "Speak up about your own needs and ideas.",
       "Set boundaries when necessary.",
       "Embrace change as an opportunity for growth."
-    ]
+    ],
+    recommendation:
+      "As an amiable communicator, your support and patience are strengths. Don't be afraid to assert your own needs and ideas. Embrace feedback and change as opportunities for growth, and remember that your calm presence is a powerful asset.",
   },
   blue: {
     description:
@@ -223,12 +235,27 @@ export const styleInfo = {
       "Be open to new approaches",
       "Communicate deadlines and expectations clearly"
     ],
-    selfView: "You see yourself as a thoughtful communicator who values accuracy and careful planning.",
-    othersView: "Others may see you as dependable and logical, but sometimes too reserved or critical.",
+    selfView:
+      "Describes oneself as a thoughtful, analytical, and precise communicator who values accuracy, logic, and careful planning in interactions. Strives to provide clear, well-structured information and prefers to base communication on facts and details.",
+    othersView:
+      "You may be perceived as analytical, precise, and reliable. People trust your attention to detail and logic, but may sometimes find you distant or overly critical. Sharing warmth and context can help others connect with your thoughtful approach.",
     adapting: [
       "Share your reasoning in simple terms.",
       "Show warmth and encouragement.",
       "Be flexible when things are ambiguous."
-    ]
+    ],
+    recommendation:
+      "As an analytical communicator, your attention to detail and logic are highly valued. To connect even more effectively, share your reasoning in accessible ways and show appreciation for others' contributions. Flexibility and warmth will help you build even stronger relationships.",
   }
+};
+
+export const multiWinnersInfo = {
+  intro: [
+    "You have a flexible communication profile and can shift between styles as needed.",
+    "This means you can adapt your approach based on the situation and audience.",
+    "This versatility is a strength in diverse teams and dynamic environments.",
+    "People may perceive you as adaptable, diplomatic, and able to connect with a wide range of personalities."
+  ],
+  recommendation:
+    "As someone with a balanced communication style, you have a unique ability to adapt and connect with many types of people. However, others may sometimes be unsure of your \"true\" style or intentions. This is not a flaw, but a natural result of your versatility. To foster trust and clarity, consider sharing your thought process and motivations openly, especially when switching between styles. This transparency helps others feel secure and lets your adaptability shine as a strength, not a source of confusion. Embrace your flexibility, but also show consistency in your values and intentions."
 };
