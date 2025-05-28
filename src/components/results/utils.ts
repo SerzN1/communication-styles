@@ -12,7 +12,7 @@ export function formatSingleWinnerText(winner: string, scores: Record<string, nu
     `Strengths:`,
     ...info.strengths.map((s: string) => `- ${s}`),
     "",
-    `Potential Blind Spots:`,
+    `Blind Spots:`,
     ...info.blindSpots.map((s: string) => `- ${s}`),
     "",
     `How you see yourself:`,

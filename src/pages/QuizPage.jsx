@@ -4,12 +4,11 @@ import QuizOption from '../components/quiz/QuizOption';
 import { getStoredData } from '../components/quiz/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
 import { assessementData, styleMeta } from '../data/quiz';
+import { useScrollToTop } from '../hooks';
 import { shuffleArray } from '../utils';
 
 const QuizPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop();
 
   const storedData = getStoredData();
   const [mode, setMode] = useState(() => storedData.mode);

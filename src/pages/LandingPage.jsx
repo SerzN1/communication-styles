@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import FinalCTASection from "../components/landing/FinalCTASection";
 import FourDimensionsSection from "../components/landing/FourDimensionsSection";
 import FourStylesSection from "../components/landing/FourStylesSection";
@@ -6,11 +5,10 @@ import HeroSection from "../components/landing/HeroSection";
 import IntroCardsSection from "../components/landing/IntroCardsSection";
 import WhyUnderstandingSection from "../components/landing/WhyUnderstandingSection";
 import { CTA } from "../components/toolkit";
+import { useScrollToTop } from "../hooks";
 
 const LandingPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollToTop();
 
   return (
     <div className="bg-gray-50 flex flex-col items-center">

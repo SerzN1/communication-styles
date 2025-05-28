@@ -4,6 +4,7 @@ import BreakdownTable from "../components/results/BreakdownTable";
 import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from "../components/results/utils";
 import { Card, CardTitle, H1 } from "../components/toolkit";
 import { multiWinnersInfo, styleInfo, styleMeta } from "../data/quiz";
+import { useScrollToTop } from "../hooks";
 
 function NoWinnersCard({ onGoToQuiz }) {
   return (
@@ -60,7 +61,7 @@ function SingleWinnerCard({ winner }) {
         </Card>
         <Card>
           <CardTitle>
-            <i className="fas fa-eye-slash text-yellow-500 mr-2"></i>Potential Blind Spots
+            <i className="fas fa-eye-slash text-yellow-500 mr-2"></i>Blind Spots
           </CardTitle>
           <ul className="space-y-2 text-gray-600">
             {blindSpots.map((s, i) => (
@@ -168,6 +169,8 @@ function MultiWinnersCard({ winners }) {
 }
 
 const ResultsPage = () => {
+  useScrollToTop();
+
   const location = useLocation();
   const navigate = useNavigate();
 

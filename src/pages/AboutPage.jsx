@@ -3,7 +3,7 @@ import { Card, CardTitle, H1, H3 } from "../components/toolkit";
 
 const AboutPage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (

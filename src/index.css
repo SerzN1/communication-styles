@@ -15,10 +15,11 @@
 }
 
 .style-card {
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .style-card:hover {
+    transform: translateY(-1px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
