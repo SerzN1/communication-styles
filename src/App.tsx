@@ -9,9 +9,8 @@ import ResultsPage from './pages/ResultsPage';
 import './App.css';
 
 function App() {
-  const basename = import.meta.env.BASE_URL || '/communication-styles/';
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter basename={import.meta.env.BASE_URL || '/'}>
       <div className="bg-gray-50 font-sans">
         <NavBar />
         <main>
@@ -20,6 +19,7 @@ function App() {
             <Route path="/assessment" element={<AssessmentPage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<LandingPage />} />
           </Routes>
         </main>
         <Footer />
