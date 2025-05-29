@@ -1,5 +1,5 @@
 export function getStoredData() {
-  const stored = localStorage.getItem('quizIntermediate');
+  const stored = localStorage.getItem('sn-assessmentIntermediate');
   if (stored) {
     try {
       const { mode, step, answers } = JSON.parse(stored);
@@ -12,7 +12,7 @@ export function getStoredData() {
       return { mode: 'intro', step: 0, answers: new Set() };
     }
   }
-  if (localStorage.getItem('quizResults')) {
+  if (localStorage.getItem('sn-assessmentResults')) {
     return { mode: 'results', step: 0, answers: new Set() };
   }
   return { mode: 'intro', step: 0, answers: new Set() };

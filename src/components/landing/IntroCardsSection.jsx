@@ -1,7 +1,7 @@
 import { Card, CardTitle } from "../toolkit";
 
 {/* SEO SUGGESTIONS:
-  - Use "communication styles quiz" and "communication style assessment" in the first sentence.
+  - Use "communication styles assessment" in the first sentence.
   - Mention "improve communication skills" and "workplace communication" for relevance.
   - Add a call to action with "start your free communication assessment now".
 */}

@@ -52,7 +52,7 @@ const NavBar = () => {
                     </li>
                     <li>
                         <Link to="/assessment" onClick={() => setMobileOpen(false)}
-                              className={`block text-sm px-2 py-4 ${isActive('/quiz') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}>
+                              className={`block text-sm px-2 py-4 ${isActive('/assessment') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}>
                             Assessment
                         </Link>
                     </li>

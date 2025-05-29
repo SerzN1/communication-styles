@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import BreakdownTable from "../components/results/BreakdownTable";
 import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from "../components/results/utils";
 import { Card, CardTitle, H1 } from "../components/toolkit";
-import { multiWinnersInfo, styleInfo, styleMeta } from "../data/quiz";
+import { multiWinnersInfo, styleInfo, styleMeta } from "../data/assessment";
 import { useScrollToTop } from "../hooks";
 
-function NoWinnersCard({ onGoToQuiz }) {
+function NoWinnersCard({ onGoToAssessment }) {
   return (
     <section
       id="results"
@@ -24,7 +24,7 @@ function NoWinnersCard({ onGoToQuiz }) {
           Please complete the assessment to see your communication style analysis.
         </p>
         <button
-          onClick={onGoToQuiz}
+          onClick={onGoToAssessment}
           className="mt-20 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
         >
           <i className="fas fa-arrow-right mr-2"></i> Go to Assessment
@@ -176,7 +176,7 @@ const ResultsPage = () => {
 
   const answers = useMemo(() => {
     if (location.state?.answers) return location.state.answers;
-    const stored = localStorage.getItem("quizResults");
+    const stored = localStorage.getItem("sn-assessmentResults");
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -198,23 +198,23 @@ const ResultsPage = () => {
         (typeof answers === "object" && Object.keys(answers).length === 0)) &&
       winners.length === 0
     ) {
-      localStorage.removeItem("quizResults");
-      navigate("/quiz", { replace: true });
+      localStorage.removeItem("sn-assessmentResults");
+      navigate("/assessment", { replace: true });
     }
     if (winners.length > 0) {
       localStorage.setItem(
-        "quizResults",
+        "sn-assessmentResults",
         JSON.stringify({ answers, scores, winners })
       );
     }
   }, [answers, scores, winners, navigate]);
 
   const handleRetake = () => {
-    localStorage.removeItem("quizResults");
+    localStorage.removeItem("sn-assessmentResults");
     navigate("/assessment");
   };
 
-  const handleGoToQuiz = () => {
+  const handleGoToAssessment = () => {
     navigate("/assessment");
   };
 
@@ -235,7 +235,7 @@ const ResultsPage = () => {
   };
 
   if (winners.length === 0) {
-    return <NoWinnersCard onGoToQuiz={handleGoToQuiz} />;
+    return <NoWinnersCard onGoToAssessment={handleGoToAssessment} />;
   }
 
   return (

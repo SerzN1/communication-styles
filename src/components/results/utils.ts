@@ -1,4 +1,4 @@
-import { multiWinnersInfo, styleInfo, styleMeta } from "../../data/quiz";
+import { multiWinnersInfo, styleInfo, styleMeta } from "../../data/assessment";
 
 export function formatSingleWinnerText(winner: string, scores: Record<string, number>) {
   const meta = styleMeta[winner];

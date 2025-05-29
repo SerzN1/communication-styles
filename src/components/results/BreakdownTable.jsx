@@ -1,5 +1,5 @@
 import { Card, CardTitle } from "../../components/toolkit";
-import { styleMeta } from "../../data/quiz";
+import { styleMeta } from "../../data/assessment";
 import { getStylePercentage } from "../../utils";
 
 function BreakdownTable({ scores }) {

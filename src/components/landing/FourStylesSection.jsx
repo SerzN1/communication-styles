@@ -1,4 +1,4 @@
-import { styleMeta } from '../../data/quiz';
+import { styleMeta } from '../../data/assessment';
 import { Card, H2 } from '../toolkit';
 
 // Map styleMeta keys to FourStylesSection order

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
-import { assessementData, styleMeta } from '../data/quiz';
+import { assessementData, styleMeta } from '../data/assessment';
 import { useScrollToTop } from '../hooks';
 import { shuffleArray } from '../utils';
 
@@ -14,7 +14,7 @@ function scrollToAssessmentCard() {
   }, 0);
 }
 
-const QuizPage = () => {
+const AssessmentPage = () => {
   useScrollToTop();
 
   const storedData = getStoredData();
@@ -32,11 +32,11 @@ const QuizPage = () => {
   useEffect(() => {
     if (mode === 'quiz') {
       localStorage.setItem(
-        'quizIntermediate',
+        'sn-assessmentIntermediate',
         JSON.stringify({ mode, step, answers: Array.from(answers) })
       );
     } else {
-      localStorage.removeItem('quizIntermediate');
+      localStorage.removeItem('sn-assessmentIntermediate');
     }
   }, [mode, step, answers]);
 
@@ -78,22 +78,22 @@ const QuizPage = () => {
     e.preventDefault();
     if (answers.size === 0) return;
     const resultObj = { answers: Array.from(answers) };
-    localStorage.setItem('quizResults', JSON.stringify(resultObj));
-    localStorage.removeItem('quizIntermediate');
+    localStorage.setItem('sn-assessmentResults', JSON.stringify(resultObj));
+    localStorage.removeItem('sn-assessmentIntermediate');
     setMode('results');
     navigate('/results', { state: resultObj });
   };
 
   const handleRestart = () => {
-    localStorage.removeItem('quizResults');
-    localStorage.removeItem('quizIntermediate');
+    localStorage.removeItem('sn-assessmentResults');
+    localStorage.removeItem('sn-assessmentIntermediate');
     setAnswers(new Set());
     setStep(0);
     setMode('quiz');
   };
 
   const handleShowResults = () => {
-    const stored = localStorage.getItem('quizResults');
+    const stored = localStorage.getItem('sn-assessmentResults');
     if (stored) {
       const parsed = JSON.parse(stored);
       navigate('/results', { state: { answers: parsed.answers } });
@@ -101,7 +101,7 @@ const QuizPage = () => {
   };
 
   return (
-    <section id="quiz" className="page mx-auto">
+    <section id="assessment" className="page mx-auto">
       <div className="text-center mb-8">
         <H1>
           Communication Style <span className="text-blue-600">Assessment</span>
@@ -229,4 +229,4 @@ const QuizPage = () => {
   );
 };
 
-export default QuizPage;
+export default AssessmentPage;
