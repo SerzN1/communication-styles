@@ -1,4 +1,4 @@
-import { StyleKey } from './data/assessment';
+import { StyleKey } from "./data/assessment";
 
 export function getStylePercentage(scores: Record<StyleKey, number>, style: StyleKey): number {
   const total = Object.values(scores).reduce((a, b) => a + b, 0);
@@ -7,7 +7,7 @@ export function getStylePercentage(scores: Record<StyleKey, number>, style: Styl
 }
 
 export function capitalize(str: string): string {
-  if (!str) return '';
+  if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -23,7 +23,9 @@ export function shuffleArray<T>(array: T[]): T[] {
 export function getWinners(scores: Record<StyleKey, number>): StyleKey[] {
   const maxScore = Math.max(...Object.values(scores));
   if (!maxScore) return [];
-  return (Object.keys(scores) as StyleKey[]).filter((style) => scores[style] === maxScore && maxScore > 0);
+  return (Object.keys(scores) as StyleKey[]).filter(
+    (style) => scores[style] === maxScore && maxScore > 0,
+  );
 }
 
 export function getScores(answers: string[] | Record<string, unknown>): Record<StyleKey, number> {

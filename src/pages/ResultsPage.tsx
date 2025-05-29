@@ -1,17 +1,19 @@
 import { useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BreakdownTable from "../components/results/BreakdownTable";
-import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from "../components/results/utils";
+import {
+  formatMultiWinnersText,
+  formatSingleWinnerText,
+  getScores,
+  getWinners,
+} from "../components/results/utils";
 import { Card, CardTitle, H1 } from "../components/toolkit";
 import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from "../data/assessment";
 import { useScrollToTop } from "../hooks";
 
 function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
   return (
-    <section
-      id="results"
-      className="page"
-    >
+    <section id="results" className="page">
       <div className="text-center mb-12">
         <H1 className="mb-12">
           <span className="block text-7xl mb-12">
@@ -36,7 +38,8 @@ function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
 
 function SingleWinnerCard({ winner }: { winner: StyleKey }) {
   const { icon, color, label } = styleMeta[winner] || {};
-  const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};
+  const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } =
+    styleInfo[winner] || {};
   return (
     <div className="text-center mb-12">
       <H1 className="mb-12">
@@ -96,9 +99,7 @@ function SingleWinnerCard({ winner }: { winner: StyleKey }) {
           <CardTitle>
             <i className="fas fa-user-md text-purple-500 mr-2"></i>Psychologist's Recommendation:
           </CardTitle>
-          <p className="space-y-2 text-gray-700">
-            {recommendation}
-          </p>
+          <p className="space-y-2 text-gray-700">{recommendation}</p>
         </Card>
       </div>
     </div>
@@ -112,12 +113,14 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
         <span className="block text-7xl mb-12">
           <i className="fas fa-layer-group text-blue-500"></i>
         </span>
-        You Have a Balanced{" "}
-        <span className="text-blue-600">Communication Style</span>
+        You Have a Balanced <span className="text-blue-600">Communication Style</span>
       </H1>
       <div className="mt-3 max-w-2xl mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
         {multiWinnersInfo.intro.map((line, i) => (
-          <span key={i}>{line}<br /></span>
+          <span key={i}>
+            {line}
+            <br />
+          </span>
         ))}
       </div>
       <div className="mt-12 grid md:grid-cols-2 gap-8 text-left">
@@ -125,7 +128,8 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
           <Card key={style}>
             <CardTitle>
               <i className={styleMeta[style].icon + " mr-2"}></i>
-              When <span className={styleMeta[style].color}>{styleMeta[style].label}</span> Style Shines
+              When <span className={styleMeta[style].color}>{styleMeta[style].label}</span> Style
+              Shines
             </CardTitle>
             <ul className="space-y-2 text-gray-600">
               {styleInfo[style].strengths.map((s, i) => (
@@ -135,7 +139,8 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
             <div className="mt-8">
               <CardTitle>
                 <i className={styleMeta[style].icon + " mr-2"}></i>
-                How <span className={styleMeta[style].color}>{styleMeta[style].label}</span> might be perceived
+                How <span className={styleMeta[style].color}>{styleMeta[style].label}</span> might
+                be perceived
               </CardTitle>
               <ul className="space-y-2 text-gray-600 mt-2">
                 <li>{styleInfo[style].othersView}</li>
@@ -149,9 +154,7 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
           </CardTitle>
           <ul className="space-y-2 text-gray-700">
             {winners.map((style) =>
-              styleInfo[style].adapting.map((tip, i) => (
-                <li key={style + i}>• {tip}</li>
-              ))
+              styleInfo[style].adapting.map((tip, i) => <li key={style + i}>• {tip}</li>),
             )}
           </ul>
         </Card>
@@ -159,9 +162,7 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
           <CardTitle>
             <i className="fas fa-user-md text-purple-500 mr-2"></i>Psychologist's Recommendation:
           </CardTitle>
-          <p className="space-y-2 text-gray-700">
-            {multiWinnersInfo.recommendation}
-          </p>
+          <p className="space-y-2 text-gray-700">{multiWinnersInfo.recommendation}</p>
         </Card>
       </div>
     </div>
@@ -202,10 +203,7 @@ const ResultsPage = () => {
       navigate("/assessment", { replace: true });
     }
     if (winners.length > 0) {
-      localStorage.setItem(
-        "sn-assessmentResults",
-        JSON.stringify({ answers, scores, winners })
-      );
+      localStorage.setItem("sn-assessmentResults", JSON.stringify({ answers, scores, winners }));
     }
   }, [answers, scores, winners, navigate]);
 

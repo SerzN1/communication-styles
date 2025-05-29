@@ -1,209 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Communication Styles Assessment</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Custom styles that can't be done with Tailwind */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
+      /* Custom styles that can't be done with Tailwind */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
+        to {
+          opacity: 1;
+        }
+      }
 
-        .progress-bar {
-            transition: width 0.3s ease;
-        }
+      .progress-bar {
+        transition: width 0.3s ease;
+      }
 
-        .style-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .style-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
 
-        .style-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
+      .style-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
 
-        #quiz-container {
-            min-height: 500px;
-        }
+      #quiz-container {
+        min-height: 500px;
+      }
     </style>
-</head>
-<body class="bg-gray-50 font-sans">
-
+  </head>
+  <body class="bg-gray-50 font-sans">
     <!-- Main Content -->
     <main>
+      <!-- Quiz Page -->
+      <section id="quiz" class="page py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto hidden">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Communication Style <span class="text-blue-600">Assessment</span>
+          </h1>
+          <p
+            class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+          >
+            Answer these questions honestly to discover your dominant communication style.
+          </p>
+        </div>
 
-        <!-- Quiz Page -->
-        <section id="quiz" class="page py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto hidden">
+        <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6 md:p-8">
+          <div class="mb-6">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-medium text-gray-700">Progress</span>
+              <span id="progress-percent" class="text-sm font-medium text-gray-700">0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+              <div
+                id="progress-bar"
+                class="progress-bar bg-blue-600 h-2.5 rounded-full"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div id="question-container">
+            <div id="intro-screen" class="text-center py-8">
+              <div class="mb-6">
+                <i class="fas fa-comment-dots text-blue-500 text-5xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Ready to Discover Your Communication Style?
+              </h3>
+              <p class="text-gray-600 mb-6 max-w-lg mx-auto">
+                This assessment consists of 20 questions. There are no right or wrong answers - just
+                select the option that best describes your natural tendencies.
+              </p>
+              <button
+                id="start-quiz"
+                class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+              >
+                Start Assessment
+              </button>
+            </div>
+
+            <div id="quiz-questions" class="hidden">
+              <h3 id="question-text" class="text-lg font-medium text-gray-800 mb-6"></h3>
+              <div id="options-container" class="space-y-3"></div>
+            </div>
+          </div>
+
+          <div id="navigation-buttons" class="mt-8 flex justify-between hidden">
+            <button
+              id="prev-btn"
+              class="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300"
+            >
+              <i class="fas fa-arrow-left mr-2"></i> Previous
+            </button>
+            <button
+              id="next-btn"
+              class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              Next <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            <button
+              id="submit-btn"
+              class="px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300 hidden"
+            >
+              Submit <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Page -->
+      <section id="results" class="page py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto hidden">
+        <div class="text-center mb-12">
+          <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Your <span class="text-blue-600">Communication Style</span> Results
+          </h1>
+          <p
+            class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl"
+          >
+            Here's your personalized communication style analysis.
+          </p>
+        </div>
+
+        <div id="results-container" class="bg-white rounded-xl shadow-md p-6 md:p-8">
+          <div id="single-style-result" class="hidden">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Communication Style <span class="text-blue-600">Assessment</span>
-                </h1>
-                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                    Answer these questions honestly to discover your dominant communication style.
+              <div
+                id="dominant-style-icon"
+                class="inline-flex p-6 rounded-full mb-4"
+                style="font-size: 3rem"
+              ></div>
+              <h2 id="dominant-style-name" class="text-2xl font-bold mb-2"></h2>
+              <p id="dominant-style-description" class="text-gray-600 max-w-2xl mx-auto"></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4 text-gray-800">Strengths</h3>
+                <ul id="strengths-list" class="space-y-2 text-gray-600"></ul>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4 text-gray-800">Potential Blind Spots</h3>
+                <ul id="blindspots-list" class="space-y-2 text-gray-600"></ul>
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4 text-gray-800">
+                Tips for Effective Communication
+              </h3>
+              <div id="communication-tips" class="bg-blue-50 p-4 rounded-lg text-gray-700"></div>
+            </div>
+          </div>
+
+          <div id="tie-result" class="hidden">
+            <div class="text-center mb-8">
+              <div class="flex justify-center space-x-4 mb-6">
+                <div id="tie-style-icon-1" class="p-4 rounded-full" style="font-size: 2.5rem"></div>
+                <div id="tie-style-icon-2" class="p-4 rounded-full" style="font-size: 2.5rem"></div>
+              </div>
+              <h2 class="text-2xl font-bold mb-4">You Have a Balanced Communication Style</h2>
+              <p class="text-gray-600 max-w-2xl mx-auto">
+                Your results show equal dominance in multiple communication styles. This means you
+                can adapt your approach based on the situation and audience.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+              <div id="tie-style-1" class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 id="tie-style-name-1" class="text-xl font-semibold mb-3 text-center"></h3>
+                <p id="tie-style-desc-1" class="text-gray-600 mb-4"></p>
+                <h4 class="font-medium mb-2 text-gray-800">When This Style Shines:</h4>
+                <ul id="tie-strengths-1" class="text-gray-600 space-y-1 mb-4"></ul>
+              </div>
+
+              <div id="tie-style-2" class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 id="tie-style-name-2" class="text-xl font-semibold mb-3 text-center"></h3>
+                <p id="tie-style-desc-2" class="text-gray-600 mb-4"></p>
+                <h4 class="font-medium mb-2 text-gray-800">When This Style Shines:</h4>
+                <ul id="tie-strengths-2" class="text-gray-600 space-y-1 mb-4"></ul>
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4 text-gray-800">Adapting Your Communication</h3>
+              <div class="bg-blue-50 p-4 rounded-lg text-gray-700">
+                <p>
+                  With balanced communication styles, you have the advantage of flexibility.
+                  Consider these strategies:
                 </p>
+                <ul class="mt-2 space-y-2">
+                  <li>
+                    <strong>Assess the situation</strong> - Determine which style would be most
+                    effective for each specific context
+                  </li>
+                  <li>
+                    <strong>Read your audience</strong> - Match your communication approach to the
+                    preferences of those you're interacting with
+                  </li>
+                  <li>
+                    <strong>Leverage your versatility</strong> - Use your ability to shift styles as
+                    a strength in diverse environments
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
 
-            <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6 md:p-8">
-                <div class="mb-6">
-                    <div class="flex justify-between mb-1">
-                        <span class="text-sm font-medium text-gray-700">Progress</span>
-                        <span id="progress-percent" class="text-sm font-medium text-gray-700">0%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5">
-                        <div id="progress-bar" class="progress-bar bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div id="question-container">
-                    <div id="intro-screen" class="text-center py-8">
-                        <div class="mb-6">
-                            <i class="fas fa-comment-dots text-blue-500 text-5xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h3>
-                        <p class="text-gray-600 mb-6 max-w-lg mx-auto">
-                            This assessment consists of 20 questions. There are no right or wrong answers - just select the option that best describes your natural tendencies.
-                        </p>
-                        <button id="start-quiz" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
-                            Start Assessment
-                        </button>
-                    </div>
-
-                    <div id="quiz-questions" class="hidden">
-                        <h3 id="question-text" class="text-lg font-medium text-gray-800 mb-6"></h3>
-                        <div id="options-container" class="space-y-3"></div>
-                    </div>
-                </div>
-
-                <div id="navigation-buttons" class="mt-8 flex justify-between hidden">
-                    <button id="prev-btn" class="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300">
-                        <i class="fas fa-arrow-left mr-2"></i> Previous
-                    </button>
-                    <button id="next-btn" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
-                        Next <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                    <button id="submit-btn" class="px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300 hidden">
-                        Submit <i class="fas fa-paper-plane ml-2"></i>
-                    </button>
-                </div>
+          <div class="mt-8">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800">Your Full Results Breakdown</h3>
+            <div class="overflow-x-auto">
+              <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Style</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Score</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Percentage</th>
+                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Description</th>
+                  </tr>
+                </thead>
+                <tbody id="results-table" class="divide-y divide-gray-200">
+                  <!-- Results will be inserted here -->
+                </tbody>
+              </table>
             </div>
-        </section>
+          </div>
 
-        <!-- Results Page -->
-        <section id="results" class="page py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto hidden">
-            <div class="text-center mb-12">
-                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Your <span class="text-blue-600">Communication Style</span> Results
-                </h1>
-                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                    Here's your personalized communication style analysis.
-                </p>
-            </div>
-
-            <div id="results-container" class="bg-white rounded-xl shadow-md p-6 md:p-8">
-                <div id="single-style-result" class="hidden">
-                    <div class="text-center mb-8">
-                        <div id="dominant-style-icon" class="inline-flex p-6 rounded-full mb-4" style="font-size: 3rem;"></div>
-                        <h2 id="dominant-style-name" class="text-2xl font-bold mb-2"></h2>
-                        <p id="dominant-style-description" class="text-gray-600 max-w-2xl mx-auto"></p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 mb-8">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-4 text-gray-800">Strengths</h3>
-                            <ul id="strengths-list" class="space-y-2 text-gray-600"></ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-4 text-gray-800">Potential Blind Spots</h3>
-                            <ul id="blindspots-list" class="space-y-2 text-gray-600"></ul>
-                        </div>
-                    </div>
-
-                    <div class="mb-8">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Tips for Effective Communication</h3>
-                        <div id="communication-tips" class="bg-blue-50 p-4 rounded-lg text-gray-700"></div>
-                    </div>
-                </div>
-
-                <div id="tie-result" class="hidden">
-                    <div class="text-center mb-8">
-                        <div class="flex justify-center space-x-4 mb-6">
-                            <div id="tie-style-icon-1" class="p-4 rounded-full" style="font-size: 2.5rem;"></div>
-                            <div id="tie-style-icon-2" class="p-4 rounded-full" style="font-size: 2.5rem;"></div>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-4">You Have a Balanced Communication Style</h2>
-                        <p class="text-gray-600 max-w-2xl mx-auto">
-                            Your results show equal dominance in multiple communication styles. This means you can adapt your approach based on the situation and audience.
-                        </p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 mb-8">
-                        <div id="tie-style-1" class="bg-white p-6 rounded-lg shadow-sm">
-                            <h3 id="tie-style-name-1" class="text-xl font-semibold mb-3 text-center"></h3>
-                            <p id="tie-style-desc-1" class="text-gray-600 mb-4"></p>
-                            <h4 class="font-medium mb-2 text-gray-800">When This Style Shines:</h4>
-                            <ul id="tie-strengths-1" class="text-gray-600 space-y-1 mb-4"></ul>
-                        </div>
-
-                        <div id="tie-style-2" class="bg-white p-6 rounded-lg shadow-sm">
-                            <h3 id="tie-style-name-2" class="text-xl font-semibold mb-3 text-center"></h3>
-                            <p id="tie-style-desc-2" class="text-gray-600 mb-4"></p>
-                            <h4 class="font-medium mb-2 text-gray-800">When This Style Shines:</h4>
-                            <ul id="tie-strengths-2" class="text-gray-600 space-y-1 mb-4"></ul>
-                        </div>
-                    </div>
-
-                    <div class="mb-8">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Adapting Your Communication</h3>
-                        <div class="bg-blue-50 p-4 rounded-lg text-gray-700">
-                            <p>With balanced communication styles, you have the advantage of flexibility. Consider these strategies:</p>
-                            <ul class="mt-2 space-y-2">
-                                <li><strong>Assess the situation</strong> - Determine which style would be most effective for each specific context</li>
-                                <li><strong>Read your audience</strong> - Match your communication approach to the preferences of those you're interacting with</li>
-                                <li><strong>Leverage your versatility</strong> - Use your ability to shift styles as a strength in diverse environments</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Your Full Results Breakdown</h3>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full bg-white rounded-lg overflow-hidden">
-                            <thead class="bg-gray-100">
-                                <tr>
-                                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Style</th>
-                                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Score</th>
-                                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Percentage</th>
-                                    <th class="py-3 px-4 text-left text-gray-700 font-semibold">Description</th>
-                                </tr>
-                            </thead>
-                            <tbody id="results-table" class="divide-y divide-gray-200">
-                                <!-- Results will be inserted here -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="mt-8 text-center">
-                    <button id="retake-quiz" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 mr-4">
-                        <i class="fas fa-redo mr-2"></i> Retake Quiz
-                    </button>
-                    <button id="download-results" class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300">
-                        <i class="fas fa-download mr-2"></i> Download Results
-                    </button>
-                </div>
-            </div>
-        </section>
-
+          <div class="mt-8 text-center">
+            <button
+              id="retake-quiz"
+              class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 mr-4"
+            >
+              <i class="fas fa-redo mr-2"></i> Retake Quiz
+            </button>
+            <button
+              id="download-results"
+              class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300"
+            >
+              <i class="fas fa-download mr-2"></i> Download Results
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
-
-</body>
+  </body>
 </html>

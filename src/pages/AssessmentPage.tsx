@@ -1,15 +1,15 @@
-import { useEffect, useMemo, useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AssessmentOption from '../components/assessment/AssessmentOption';
-import { getStoredData } from '../components/assessment/utils';
-import { Card, CardTitle, H1 } from '../components/toolkit';
-import { assessementData, StyleKey, styleMeta } from '../data/assessment';
-import { useScrollToTop } from '../hooks';
-import { shuffleArray } from '../utils';
+import { useEffect, useMemo, useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+import AssessmentOption from "../components/assessment/AssessmentOption";
+import { getStoredData } from "../components/assessment/utils";
+import { Card, CardTitle, H1 } from "../components/toolkit";
+import { assessementData, StyleKey, styleMeta } from "../data/assessment";
+import { useScrollToTop } from "../hooks";
+import { shuffleArray } from "../utils";
 
 function scrollToAssessmentCard() {
   setTimeout(() => {
-    const card = document.getElementById('assessment-card');
+    const card = document.getElementById("assessment-card");
     (card ?? document.body).scrollIntoView({ behavior: "smooth", block: "start" });
   }, 0);
 }
@@ -25,23 +25,23 @@ const AssessmentPage = () => {
 
   const total = assessementData.length;
   const percent = Math.round((step / total) * 100);
-  const { category = '', description = '', options = [] } = assessementData[step] || {};
+  const { category = "", description = "", options = [] } = assessementData[step] || {};
   const shuffledOptions = useMemo(() => shuffleArray(options), [options]);
 
   // Persist intermediate state
   useEffect(() => {
-    if (mode === 'quiz') {
+    if (mode === "quiz") {
       localStorage.setItem(
-        'sn-assessmentIntermediate',
-        JSON.stringify({ mode, step, answers: Array.from(answers) })
+        "sn-assessmentIntermediate",
+        JSON.stringify({ mode, step, answers: Array.from(answers) }),
       );
     } else {
-      localStorage.removeItem('sn-assessmentIntermediate');
+      localStorage.removeItem("sn-assessmentIntermediate");
     }
   }, [mode, step, answers]);
 
   const handleStart = () => {
-    setMode('quiz');
+    setMode("quiz");
     setStep(0);
     setAnswers(new Set());
   };
@@ -78,25 +78,25 @@ const AssessmentPage = () => {
     e.preventDefault();
     if (answers.size === 0) return;
     const resultObj = { answers: Array.from(answers) };
-    localStorage.setItem('sn-assessmentResults', JSON.stringify(resultObj));
-    localStorage.removeItem('sn-assessmentIntermediate');
-    setMode('results');
-    navigate('/results', { state: resultObj });
+    localStorage.setItem("sn-assessmentResults", JSON.stringify(resultObj));
+    localStorage.removeItem("sn-assessmentIntermediate");
+    setMode("results");
+    navigate("/results", { state: resultObj });
   };
 
   const handleRestart = () => {
-    localStorage.removeItem('sn-assessmentResults');
-    localStorage.removeItem('sn-assessmentIntermediate');
+    localStorage.removeItem("sn-assessmentResults");
+    localStorage.removeItem("sn-assessmentIntermediate");
     setAnswers(new Set());
     setStep(0);
-    setMode('quiz');
+    setMode("quiz");
   };
 
   const handleShowResults = () => {
-    const stored = localStorage.getItem('sn-assessmentResults');
+    const stored = localStorage.getItem("sn-assessmentResults");
     if (stored) {
       const parsed = JSON.parse(stored);
-      navigate('/results', { state: { answers: parsed.answers } });
+      navigate("/results", { state: { answers: parsed.answers } });
     }
   };
 
@@ -111,23 +111,23 @@ const AssessmentPage = () => {
         </p>
       </div>
 
-      <Card className='max-w-3xl m-auto' id="assessment-card">
+      <Card className="max-w-3xl m-auto" id="assessment-card">
         <div className="mb-6">
           <div className="flex justify-between mb-1">
             <span className="text-sm font-medium text-gray-700">Progress</span>
             <span className="text-sm font-medium text-gray-700">
-              {mode === 'quiz' ? `${percent}%` : "0%"}
+              {mode === "quiz" ? `${percent}%` : "0%"}
             </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div
               className="progress-bar bg-blue-600 h-2.5 rounded-full"
-              style={{ width: mode === 'quiz' ? `${percent}%` : "0%" }}
+              style={{ width: mode === "quiz" ? `${percent}%` : "0%" }}
             ></div>
           </div>
         </div>
 
-        {mode === 'results' ? (
+        {mode === "results" ? (
           <div className="text-center py-8" id="restart-screen">
             <div className="mb-6">
               <i className="fas fa-check-circle text-green-500 text-5xl"></i>
@@ -151,7 +151,7 @@ const AssessmentPage = () => {
               </button>
             </div>
           </div>
-        ) : mode === 'intro' ? (
+        ) : mode === "intro" ? (
           <div className="text-center py-8" id="intro-screen">
             <div className="mb-6">
               <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
@@ -160,7 +160,9 @@ const AssessmentPage = () => {
               Ready to Discover Your Communication Style?
             </h3>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-              This assessment consists of {total} sections representing different communication dimentions. There are no right or wrong answers - just select the option that best describes your natural tendencies.
+              This assessment consists of {total} sections representing different communication
+              dimentions. There are no right or wrong answers - just select the option that best
+              describes your natural tendencies.
             </p>
             <button
               onClick={handleStart}
@@ -171,11 +173,9 @@ const AssessmentPage = () => {
           </div>
         ) : (
           // Only show the current step's form, not all at once
-          <form onSubmit={handleSubmit} id='assessment-form'>
-            <CardTitle>
-              {category}
-            </CardTitle>
-            <p className='mb-10'>{description}</p>
+          <form onSubmit={handleSubmit} id="assessment-form">
+            <CardTitle>{category}</CardTitle>
+            <p className="mb-10">{description}</p>
             <div className="space-y-3 -mx-2 sm:mx-0">
               {shuffledOptions.map((item) => {
                 const { color, option } = item;
@@ -201,7 +201,7 @@ const AssessmentPage = () => {
               >
                 <i className="fas fa-arrow-left mr-2"></i> Previous
               </button>
-              {(step < total - 1) && (
+              {step < total - 1 && (
                 <button
                   type="button"
                   onClick={handleNext}

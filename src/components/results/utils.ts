@@ -34,22 +34,15 @@ export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, 
         (style) =>
           `${styleMeta[style].label}: ${scores[style]} (${
             scores[style] > 0
-              ? Math.round(
-                  (scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100
-                )
+              ? Math.round((scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100)
               : 0
-          }%)`
+          }%)`,
       ),
   ].join("\n");
 }
 
 export function formatMultiWinnersText(winners: StyleKey[], scores: Record<string, number>) {
-  let text = [
-    `You Have a Balanced Communication Style`,
-    "",
-    ...multiWinnersInfo.intro,
-    ""
-  ];
+  let text = [`You Have a Balanced Communication Style`, "", ...multiWinnersInfo.intro, ""];
   winners.forEach((style) => {
     const meta = styleMeta[style];
     const info = styleInfo[style];
@@ -62,7 +55,7 @@ export function formatMultiWinnersText(winners: StyleKey[], scores: Record<strin
       "",
       `Psychologist's Recommendation:`,
       info.recommendation,
-      ""
+      "",
     );
   });
   text.push(
@@ -79,12 +72,10 @@ export function formatMultiWinnersText(winners: StyleKey[], scores: Record<strin
         (style) =>
           `${styleMeta[style].label}: ${scores[style]} (${
             scores[style] > 0
-              ? Math.round(
-                  (scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100
-                )
+              ? Math.round((scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100)
               : 0
-          }%)`
-      )
+          }%)`,
+      ),
   );
   return text.join("\n");
 }
@@ -98,7 +89,9 @@ export function getStylePercentage(scores: Record<string, number>, style: string
 export function getWinners(scores: Record<StyleKey, number>): StyleKey[] {
   const maxScore = Math.max(...Object.values(scores));
   if (!maxScore) return [];
-  return (Object.keys(scores) as StyleKey[]).filter((style) => scores[style as StyleKey] === maxScore && maxScore > 0);
+  return (Object.keys(scores) as StyleKey[]).filter(
+    (style) => scores[style as StyleKey] === maxScore && maxScore > 0,
+  );
 }
 
 export function getScores(answers: string[] | Record<string, unknown>): Record<StyleKey, number> {

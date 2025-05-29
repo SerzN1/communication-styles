@@ -4,4 +4,3 @@ export { default as FourStylesSection } from "./FourStylesSection";
 export { default as HeroSection } from "./HeroSection";
 export { default as IntroCardsSection } from "./IntroCardsSection";
 export { default as WhyUnderstandingSection } from "./WhyUnderstandingSection";
-
