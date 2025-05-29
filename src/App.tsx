@@ -9,8 +9,9 @@ import ResultsPage from './pages/ResultsPage';
 import './App.css';
 
 function App() {
+  const basename = import.meta.env.BASE_URL || '/communication-styles/';
   return (
-    <BrowserRouter basename="/communication-styles/">
+    <BrowserRouter basename={basename}>
       <div className="bg-gray-50 font-sans">
         <NavBar />
         <main>
