@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardTitle, H1, H3 } from "../components/toolkit";
 
 const AboutPage = () => {
@@ -60,7 +61,7 @@ const AboutPage = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="text-center">
             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-            <H3 className="font-semibold mmy-0">Dr. AI Victoria Johnson</H3>
+            <H3 className="font-semibold mmy-0">Dr. AI Anna Johnson</H3>
             <p className="text-gray-600">Lead Psychologist</p>
             <p className="text-gray-500 text-sm mt-2">PhD in Communication Studies with 15 years of research experience</p>
           </div>
@@ -72,7 +73,7 @@ const AboutPage = () => {
           </div>
           <div className="text-center">
             <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
-            <H3>AI Anna Smith</H3>
+            <H3>AI Victoria Smith</H3>
             <p className="text-gray-600">User Experience</p>
             <p className="text-gray-500 text-sm mt-2">Ensures our tools are accessible and easy to use for everyone</p>
           </div>
@@ -80,9 +81,12 @@ const AboutPage = () => {
       </Card>
 
       <div className="mt-12 text-center">
-        <a href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 nav-link">
+        <Link
+          to="/"
+          className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 nav-link"
+        >
           <i className="fas fa-home mr-2"></i> Back to Home
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -52,7 +52,7 @@ const styleCards = [
 ];
 
 const FourDimensionsSection = () => (
-	<section className="w-full max-w-5xl px-4 mb-10">
+	<section className="w-full mb-10">
 		<div className="mb-10">
 			<H2 className='text-4xl'>Four Dimensions of <span className="text-blue-600">Communication</span></H2>
 			<p className="mt-4 max-w-xl mx-auto text-xl text-gray-500 text-center">

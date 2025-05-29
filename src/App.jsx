@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import AboutPage from './pages/AboutPage';
 import LandingPage from './pages/LandingPage';
-import QuizPage from './pages/QuizPage';
+import AssessmentPage from './pages/AssessmentPage';
 import ResultsPage from './pages/ResultsPage';
 
 import './App.css';
@@ -15,7 +15,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/assessment" element={<AssessmentPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>

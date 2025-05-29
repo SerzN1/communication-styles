@@ -24,9 +24,9 @@ const NavBar = () => {
                               className={`py-4 px-2 font-medium ${isActive('/') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}>
                             Home
                         </Link>
-                        <Link to="/quiz"
-                              className={`py-4 px-2 font-medium ${isActive('/quiz') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}>
-                            Quiz
+                        <Link to="/assessment"
+                              className={`py-4 px-2 font-medium ${isActive('/assessment') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}>
+                            Assessment
                         </Link>
                         <Link to="/about"
                               className={`py-4 px-2 font-medium ${isActive('/about') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}>
@@ -51,9 +51,9 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/quiz" onClick={() => setMobileOpen(false)}
+                        <Link to="/assessment" onClick={() => setMobileOpen(false)}
                               className={`block text-sm px-2 py-4 ${isActive('/quiz') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}>
-                            Quiz
+                            Assessment
                         </Link>
                     </li>
                     <li>

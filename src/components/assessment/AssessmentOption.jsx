@@ -1,4 +1,4 @@
-export default function QuizOption({ id, checked, onChange, color, option }) {
+export default function AssessmentOption({ id, checked, onChange, color, option }) {
   return (
     <div className="flex items-center gap-4">
       <input
@@ -14,7 +14,7 @@ export default function QuizOption({ id, checked, onChange, color, option }) {
       <label
         htmlFor={id}
         id={`${id}-label`}
-        className={`flex-1 cursor-pointer px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
+        className={`flex-1 cursor-pointer px-3 sm:px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
           ${checked ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
         `}
         tabIndex={0}

@@ -1,7 +1,7 @@
 import { Card, CTA } from "../toolkit";
 
 const FinalCTASection = () => (
-  <section className="w-full max-w-3xl mx-auto text-center mb-20 px-4">
+  <section className="w-full max-w-3xl mx-auto text-center">
     <Card className="md:p-10 border-4 border-blue-500">
       <h3 className="text-3xl font-bold text-gray-900 mb-4">
         Ready to Discover Your Communication Style?
@@ -30,7 +30,7 @@ const FinalCTASection = () => (
           </div>
         </div>
       </div>
-      <CTA to="/quiz">Begin Assessment</CTA>
+      <CTA className="!mb-0">Begin Assessment</CTA>
     </Card>
   </section>
 );

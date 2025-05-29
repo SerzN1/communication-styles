@@ -1,11 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import QuizOption from '../components/quiz/QuizOption';
-import { getStoredData } from '../components/quiz/utils';
+import AssessmentOption from '../components/assessment/AssessmentOption';
+import { getStoredData } from '../components/assessment/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
 import { assessementData, styleMeta } from '../data/quiz';
 import { useScrollToTop } from '../hooks';
 import { shuffleArray } from '../utils';
+
+function scrollToAssessmentCard() {
+  setTimeout(() => {
+    const card = document.getElementById('assessment-card');
+    (card ?? document.body).scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 0);
+}
 
 const QuizPage = () => {
   useScrollToTop();
@@ -55,14 +62,14 @@ const QuizPage = () => {
   const handleNext = () => {
     setStep((s) => {
       const nextStep = Math.min(s + 1, total - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToAssessmentCard();
       return nextStep;
     });
   };
   const handlePrev = () => {
     setStep((s) => {
       const prevStep = Math.max(0, s - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToAssessmentCard();
       return prevStep;
     });
   };
@@ -104,7 +111,7 @@ const QuizPage = () => {
         </p>
       </div>
 
-      <Card className='max-w-3xl m-auto'>
+      <Card className='max-w-3xl m-auto' id="assessment-card">
         <div className="mb-6">
           <div className="flex justify-between mb-1">
             <span className="text-sm font-medium text-gray-700">Progress</span>
@@ -164,17 +171,17 @@ const QuizPage = () => {
           </div>
         ) : (
           // Only show the current step's form, not all at once
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} id='assessment-form'>
             <CardTitle>
               {category}
             </CardTitle>
             <p className='mb-10'>{description}</p>
-            <div className="space-y-3">
+            <div className="space-y-3 -mx-2 sm:mx-0">
               {shuffledOptions.map((item) => {
                 const { color, option } = item;
                 const key = `${category}|${color}|${option}`;
                 return (
-                  <QuizOption
+                  <AssessmentOption
                     key={key}
                     id={key}
                     checked={answers.has(key)}

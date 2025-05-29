@@ -5,7 +5,7 @@ import { Card, H2 } from '../toolkit';
 const styleOrder = ['blue', 'red', 'green', 'yellow'];
 
 const FourStylesSection = () => (
-  <section className="w-full max-w-5xl px-4 mb-20">
+  <section className="mb-20">
     <H2 className='text-4xl mb-10'>
       The Four Main <span className="text-blue-600">Communication Styles</span>
     </H2>
