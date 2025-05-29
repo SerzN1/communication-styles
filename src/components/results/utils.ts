@@ -1,6 +1,6 @@
-import { multiWinnersInfo, styleInfo, styleMeta } from "../../data/assessment";
+import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from "../../data/assessment";
 
-export function formatSingleWinnerText(winner: string, scores: Record<string, number>) {
+export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, number>) {
   const meta = styleMeta[winner];
   const info = styleInfo[winner];
   return [
@@ -28,7 +28,7 @@ export function formatSingleWinnerText(winner: string, scores: Record<string, nu
     info.recommendation,
     "",
     "Results Breakdown:",
-    ...Object.keys(scores)
+    ...(Object.keys(scores) as StyleKey[])
       .sort((a, b) => scores[b] - scores[a])
       .map(
         (style) =>
@@ -43,7 +43,7 @@ export function formatSingleWinnerText(winner: string, scores: Record<string, nu
   ].join("\n");
 }
 
-export function formatMultiWinnersText(winners: string[], scores: Record<string, number>) {
+export function formatMultiWinnersText(winners: StyleKey[], scores: Record<string, number>) {
   let text = [
     `You Have a Balanced Communication Style`,
     "",
@@ -73,7 +73,7 @@ export function formatMultiWinnersText(winners: string[], scores: Record<string,
     multiWinnersInfo.recommendation,
     "",
     "Results Breakdown:",
-    ...Object.keys(scores)
+    ...(Object.keys(scores) as StyleKey[])
       .sort((a, b) => scores[b] - scores[a])
       .map(
         (style) =>
@@ -95,13 +95,13 @@ export function getStylePercentage(scores: Record<string, number>, style: string
   return Math.round((scores[style] / total) * 100);
 }
 
-export function getWinners(scores: Record<string, number>): string[] {
+export function getWinners(scores: Record<StyleKey, number>): StyleKey[] {
   const maxScore = Math.max(...Object.values(scores));
   if (!maxScore) return [];
-  return Object.keys(scores).filter((style) => scores[style] === maxScore && maxScore > 0);
+  return (Object.keys(scores) as StyleKey[]).filter((style) => scores[style as StyleKey] === maxScore && maxScore > 0);
 }
 
-export function getScores(answers: any): Record<string, number> {
+export function getScores(answers: string[] | Record<string, unknown>): Record<StyleKey, number> {
   const scores: Record<string, number> = { yellow: 0, red: 0, green: 0, blue: 0 };
   const countColors = (key: string) => {
     let [, color] = key.split("|");

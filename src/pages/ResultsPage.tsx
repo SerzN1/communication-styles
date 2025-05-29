@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import BreakdownTable from "../components/results/BreakdownTable";
 import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from "../components/results/utils";
 import { Card, CardTitle, H1 } from "../components/toolkit";
-import { multiWinnersInfo, styleInfo, styleMeta } from "../data/assessment";
+import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from "../data/assessment";
 import { useScrollToTop } from "../hooks";
 
-function NoWinnersCard({ onGoToAssessment }) {
+function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
   return (
     <section
       id="results"
@@ -34,7 +34,7 @@ function NoWinnersCard({ onGoToAssessment }) {
   );
 }
 
-function SingleWinnerCard({ winner }) {
+function SingleWinnerCard({ winner }: { winner: StyleKey }) {
   const { icon, color, label } = styleMeta[winner] || {};
   const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};
   return (
@@ -105,7 +105,7 @@ function SingleWinnerCard({ winner }) {
   );
 }
 
-function MultiWinnersCard({ winners }) {
+function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
   return (
     <div className="text-center mb-12">
       <H1 className="mb-12">

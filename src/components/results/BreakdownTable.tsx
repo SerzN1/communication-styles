@@ -1,8 +1,8 @@
 import { Card, CardTitle } from "../../components/toolkit";
-import { styleMeta } from "../../data/assessment";
+import { StyleKey, styleMeta } from "../../data/assessment";
 import { getStylePercentage } from "../../utils";
 
-function BreakdownTable({ scores }) {
+function BreakdownTable({ scores }: { scores: Record<StyleKey, number> }) {
   return (
     <Card>
       <CardTitle>
@@ -24,7 +24,7 @@ function BreakdownTable({ scores }) {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {Object.keys(scores)
+            {(Object.keys(scores) as StyleKey[])
               .sort((a, b) => scores[b] - scores[a])
               .map((style) => (
                 <tr key={style}>

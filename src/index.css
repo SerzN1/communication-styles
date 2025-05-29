@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Custom styles from comm-style2.html */
 .fade-in {
     animation: fadeIn 0.5s ease-in;
 }
@@ -25,8 +24,4 @@
 
 .page {
     @apply py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto;
-}
-
-.page.hidden {
-    display: none;
 }

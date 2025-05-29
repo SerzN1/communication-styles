@@ -1,4 +1,20 @@
-export default function AssessmentOption({ id, checked, onChange, color, option }) {
+import { ChangeEventHandler, KeyboardEvent, ChangeEvent } from "react";
+
+interface AssessmentOptionProps {
+  id: string;
+  checked: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  color: string;
+  option: string;
+}
+
+export default function AssessmentOption({
+  id,
+  checked,
+  onChange,
+  color,
+  option,
+}: AssessmentOptionProps) {
   return (
     <div className="flex items-center gap-4">
       <input
@@ -18,10 +34,10 @@ export default function AssessmentOption({ id, checked, onChange, color, option 
           ${checked ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
         `}
         tabIndex={0}
-        onKeyDown={e => {
+        onKeyDown={(e: KeyboardEvent<HTMLLabelElement>) => {
           if (e.key === " " || e.key === "Enter") {
             e.preventDefault();
-            onChange();
+            onChange(e as unknown as ChangeEvent<HTMLInputElement>);
           }
         }}
         aria-pressed={checked}

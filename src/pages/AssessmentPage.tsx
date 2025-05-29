@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
-import { assessementData, styleMeta } from '../data/assessment';
+import { assessementData, StyleKey, styleMeta } from '../data/assessment';
 import { useScrollToTop } from '../hooks';
 import { shuffleArray } from '../utils';
 
@@ -46,7 +46,7 @@ const AssessmentPage = () => {
     setAnswers(new Set());
   };
 
-  const handleChange = (category, color, option) => {
+  const handleChange = (category: string, color: StyleKey, option: string) => {
     const key = `${category}|${color}|${option}`;
     setAnswers((prev) => {
       const next = new Set(prev);
@@ -74,7 +74,7 @@ const AssessmentPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (answers.size === 0) return;
     const resultObj = { answers: Array.from(answers) };

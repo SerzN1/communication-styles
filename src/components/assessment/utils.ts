@@ -1,4 +1,10 @@
-export function getStoredData() {
+export interface StoredData {
+  mode: string;
+  step: number;
+  answers: Set<string>;
+}
+
+export function getStoredData(): StoredData {
   const stored = localStorage.getItem('sn-assessmentIntermediate');
   if (stored) {
     try {

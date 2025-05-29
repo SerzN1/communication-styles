@@ -1,4 +1,16 @@
-export const styleMeta = {
+export type StyleKey = 'blue' | 'red' | 'green' | 'yellow';
+
+export interface StyleMeta {
+  color: string;
+  label: string;
+  accent: string;
+  icon: string;
+  bg: string;
+  title: string;
+  desc: string;
+}
+
+export const styleMeta: Record<StyleKey, StyleMeta> = {
   blue: {
     color: 'text-blue-600',
     label: 'Blue',
@@ -37,7 +49,18 @@ export const styleMeta = {
   }
 };
 
-export const assessementData = [
+export interface AssessmentOption {
+  color: StyleKey;
+  option: string;
+}
+
+export interface AssessmentCategory {
+  category: string;
+  description: string;
+  options: AssessmentOption[];
+}
+
+export const assessementData: AssessmentCategory[] = [
   {
     category: "Verbal dimention",
     description: "Verbal is connected to what you say, the way you express yourself. It is how we talk, write, listen, and read.",
@@ -110,7 +133,16 @@ export const assessementData = [
   }
 ];
 
-export const styleInfo = {
+export const styleInfo: Record<StyleKey, {
+  description: string;
+  strengths: string[];
+  blindSpots: string[];
+  tips: string[];
+  selfView: string;
+  othersView: string;
+  adapting: string[];
+  recommendation: string;
+}> = {
   yellow: {
     description:
       "You communicate with energy and creativity. You enjoy sharing ideas and inspiring others, and you thrive in lively conversations. Your direct approach helps move things forward, but sometimes you may overlook others' feelings. You like to get to the point and value quick results.",
@@ -149,107 +181,110 @@ export const styleInfo = {
     description:
       "You bring passion and energy to your communication. You inspire and motivate others, and you’re comfortable sharing your feelings. Your optimism is contagious, but you may sometimes overlook details or talk over others. You value connection and enjoy working with people.",
     strengths: [
-      "Brings energy and enthusiasm",
-      "Persuades and inspires others",
-      "Shares emotions openly",
-      "Creates a positive atmosphere",
-      "Encourages collaboration"
+      "Inspires and motivates others",
+      "Expresses feelings openly",
+      "Optimistic and enthusiastic",
+      "Builds strong relationships",
+      "Enjoys teamwork"
     ],
     blindSpots: [
-      "May dominate conversations",
-      "Can be seen as overly emotional",
-      "Sometimes misses details",
-      "May struggle with structure"
+      "May overlook details",
+      "Can dominate conversations",
+      "Sometimes interrupts others",
+      "May be overly optimistic"
     ],
     tips: [
-      "Give space for quieter voices",
-      "Balance feelings with facts",
-      "Be mindful of time and structure",
-      "Summarize key points for clarity"
+      "Pay attention to details",
+      "Let others share their ideas",
+      "Balance optimism with realism",
+      "Practice active listening"
     ],
     selfView:
-      "Describes oneself as a decisive, results-focused communicator who motivates others and values efficiency.",
+      "Sees oneself as a passionate communicator who values connection and teamwork. Enjoys sharing ideas and motivating others.",
     othersView:
-      "Seen as confident and assertive. Some admire your decisiveness, while others may find you too direct. Balancing drive with empathy helps others feel valued.",
+      "Viewed as enthusiastic and supportive. Others appreciate your energy, but may wish for more focus on details and shared airtime.",
     adapting: [
-      "Listen actively and avoid interrupting.",
-      "Use facts to support your enthusiasm.",
-      "Adapt your energy to the context and audience."
+      "Give space for quieter voices.",
+      "Double-check details before acting.",
+      "Encourage input from all team members."
     ],
     recommendation:
-      "Your decisiveness is a strength. Take time to consider others' perspectives and emotions. Balancing your results-driven approach with empathy will help you build trust and achieve more together.",
+      "Channel your passion to inspire, but remember to listen and check details. Your energy is valuable—use it to build strong, balanced teams.",
   },
   green: {
     description:
-      "You are a supportive and patient communicator. You listen carefully and value understanding others. You build strong relationships and help create harmony, but may avoid conflict or hesitate to share your own ideas. You work best in cooperative, trusting environments.",
+      "You are supportive, patient, and relationship-focused. You value harmony and cooperation, often putting others’ needs first. Your calm approach helps resolve conflicts, but you may avoid difficult conversations. You build trust and foster collaboration.",
     strengths: [
-      "Supportive and patient",
-      "Listens deeply",
-      "Builds strong relationships",
-      "Sensitive to others' needs",
-      "Promotes harmony"
+      "Listens attentively",
+      "Builds trust",
+      "Encourages collaboration",
+      "Resolves conflicts calmly",
+      "Supports others"
     ],
     blindSpots: [
-      "May avoid necessary conflict",
+      "May avoid confrontation",
       "Can be indecisive",
-      "Might put others' needs first",
-      "Sometimes resists change"
+      "Sometimes neglects own needs",
+      "May struggle with assertiveness"
     ],
     tips: [
-      "Speak up about your own ideas",
-      "Welcome constructive feedback",
-      "Balance harmony with honesty",
-      "Be open to new approaches"
+      "Practice assertive communication",
+      "Set clear boundaries",
+      "Express your own needs",
+      "Embrace constructive feedback"
     ],
     selfView:
-      "Describes oneself as a caring, patient communicator who values harmony and listens deeply to others.",
+      "Sees oneself as a calm, supportive communicator who values harmony and teamwork. Enjoys helping others succeed.",
     othersView:
-      "Seen as supportive and trustworthy. Others feel comfortable around you, but may wish you’d assert your own needs more. Your calm presence is valued—remember to share your perspective too.",
+      "Viewed as trustworthy and dependable. Others appreciate your support, but may wish for more directness and decisiveness.",
     adapting: [
-      "Speak up about your own needs and ideas.",
-      "Set boundaries when necessary.",
-      "Embrace change as an opportunity for growth."
+      "Speak up about your own needs.",
+      "Be willing to address conflicts directly.",
+      "Balance support for others with self-care."
     ],
     recommendation:
-      "Your support and patience are strengths. Don’t be afraid to assert your own needs and ideas. Embrace feedback and change as opportunities for growth, and remember your calm presence is a powerful asset.",
+      "Use your supportive nature to build strong teams, but remember to assert your own needs. Your calm presence is a strength—use it to foster open, honest communication.",
   },
   blue: {
     description:
-      "You are thoughtful and analytical in your communication. You focus on details and value accuracy and logic. You plan carefully and set high standards, but may sometimes seem distant or overly critical. You prefer clear expectations and well-structured information.",
+      "You are precise, logical, and data-driven. You value accuracy and tend to be a systematic thinker who prefers facts over emotions. Your analytical approach helps solve problems, but you may come across as distant or overly critical. You excel at planning and organization.",
     strengths: [
-      "Analytical and precise",
-      "Consistent and reliable",
-      "Thorough communicator",
-      "Values accuracy and logic",
-      "Plans ahead and anticipates problems"
+      "Thinks logically",
+      "Pays attention to detail",
+      "Organizes information well",
+      "Solves problems systematically",
+      "Values accuracy"
     ],
     blindSpots: [
       "May seem distant or critical",
-      "Can get lost in details",
-      "Might struggle with ambiguity",
-      "Sometimes slow to decide"
+      "Can overanalyze decisions",
+      "Sometimes struggles with ambiguity",
+      "May prioritize facts over feelings"
     ],
     tips: [
-      "Share the big picture, not just details",
-      "Express appreciation and encouragement",
+      "Acknowledge emotions in conversations",
       "Be open to new ideas",
-      "Communicate deadlines and expectations clearly"
+      "Balance analysis with action",
+      "Communicate the reasoning behind decisions"
     ],
     selfView:
-      "Describes oneself as a thoughtful, analytical communicator who values accuracy and careful planning.",
+      "Sees oneself as a logical, organized communicator who values accuracy and clarity. Enjoys solving problems and making plans.",
     othersView:
-      "Seen as precise and reliable. People trust your attention to detail, but may sometimes find you distant or too critical. Sharing warmth and context helps others connect with your thoughtful approach.",
+      "Viewed as reliable and thorough. Others appreciate your attention to detail, but may wish for more warmth and flexibility.",
     adapting: [
-      "Share your reasoning in simple terms.",
-      "Show warmth and encouragement.",
-      "Be flexible when things are ambiguous."
+      "Show empathy in your interactions.",
+      "Be open to less-structured approaches.",
+      "Balance facts with consideration for people."
     ],
     recommendation:
-      "Your attention to detail and logic are valued. To connect even better, share your reasoning simply and show appreciation for others. Flexibility and warmth will help you build stronger relationships.",
+      "Use your analytical skills to solve problems, but remember to connect with others emotionally. Your precision is valuable—use it to build trust and clarity.",
   }
 };
 
-export const multiWinnersInfo = {
+export const multiWinnersInfo: {
+  intro: string[];
+  recommendation: string;
+} = {
   intro: [
     "You have a flexible communication profile and can shift between styles as needed.",
     "You adapt your approach based on the situation and audience.",
