@@ -1,12 +1,55 @@
-# React + Vite
+# Communication Styles Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
+Communication Styles Assessment is a web application that helps users identify their unique communication style through a quick, research-based quiz. The app provides actionable, personalized insights to help users improve their communication in both professional and personal settings.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **Frontend:** React (with functional components and hooks)
+- **Build Tool:** Vite for fast development and optimized builds
+- **Styling:** Tailwind CSS for utility-first, responsive design
+- **Routing:** React Router for seamless navigation
+- **Linting:** ESLint for code quality and consistency
+- **Deployment:** GitHub Pages (via the `gh-pages` npm package)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Contribution
+We welcome contributions from the community! You can help by:
+- Reporting bugs or suggesting features via GitHub Issues
+- Submitting pull requests for improvements or fixes
+- Reviewing and discussing open issues and PRs
+- Following code style and best practices outlined in the project
 
-## Expanding the ESLint configuration
+For significant changes, please open an issue to discuss your proposal before submitting a pull request.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Development
+To set up the project locally:
+1. Install dependencies:
+   ```sh
+   npm install
+   ```
+2. Start the development server:
+   ```sh
+   npm run dev
+   ```
+3. Lint your code:
+   ```sh
+   npm run lint
+   ```
+4. Build for production:
+   ```sh
+   npm run build
+   ```
+
+## Deployment
+To deploy a new version of the app:
+1. Build the production version:
+   ```sh
+   npm run build
+   ```
+2. Deploy to GitHub Pages:
+   ```sh
+   npm run deploy
+   ```
+
+The app will be published to the `gh-pages` branch and served via GitHub Pages, making it accessible as a static site.
+
+---
