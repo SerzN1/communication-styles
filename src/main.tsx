@@ -7,7 +7,7 @@ import './index.css';
 const root = document.getElementById('root') as HTMLElement;
 createRoot(root).render(
   <StrictMode>
-    <BrowserRouter basename="/communication-styles">
+    <BrowserRouter basename="/communication-styles/">
       <App />
     </BrowserRouter>
   </StrictMode>,
