@@ -1,16 +1,16 @@
-import { useEffect, useMemo, useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import AssessmentOption from "../components/assessment/AssessmentOption";
-import { getStoredData } from "../components/assessment/utils";
-import { Card, CardTitle, H1 } from "../components/toolkit";
-import { assessementData, StyleKey, styleMeta } from "../data/assessment";
-import { useScrollToTop } from "../hooks";
-import { shuffleArray } from "../utils";
+import { useEffect, useMemo, useState, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AssessmentOption from '../components/assessment/AssessmentOption';
+import { getStoredData } from '../components/assessment/utils';
+import { Card, CardTitle, H1 } from '../components/toolkit';
+import { assessementData, StyleKey, styleMeta } from '../data/assessment';
+import { useScrollToTop } from '../hooks';
+import { shuffleArray } from '../utils';
 
 function scrollToAssessmentCard() {
   setTimeout(() => {
-    const card = document.getElementById("assessment-card");
-    (card ?? document.body).scrollIntoView({ behavior: "smooth", block: "start" });
+    const card = document.getElementById('assessment-card');
+    (card ?? document.body).scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 0);
 }
 
@@ -25,23 +25,20 @@ const AssessmentPage = () => {
 
   const total = assessementData.length;
   const percent = Math.round((step / total) * 100);
-  const { category = "", description = "", options = [] } = assessementData[step] || {};
+  const { category = '', description = '', options = [] } = assessementData[step] || {};
   const shuffledOptions = useMemo(() => shuffleArray(options), [options]);
 
   // Persist intermediate state
   useEffect(() => {
-    if (mode === "quiz") {
-      localStorage.setItem(
-        "sn-assessmentIntermediate",
-        JSON.stringify({ mode, step, answers: Array.from(answers) }),
-      );
+    if (mode === 'quiz') {
+      localStorage.setItem('sn-assessmentIntermediate', JSON.stringify({ mode, step, answers: Array.from(answers) }));
     } else {
-      localStorage.removeItem("sn-assessmentIntermediate");
+      localStorage.removeItem('sn-assessmentIntermediate');
     }
   }, [mode, step, answers]);
 
   const handleStart = () => {
-    setMode("quiz");
+    setMode('quiz');
     setStep(0);
     setAnswers(new Set());
   };
@@ -78,25 +75,25 @@ const AssessmentPage = () => {
     e.preventDefault();
     if (answers.size === 0) return;
     const resultObj = { answers: Array.from(answers) };
-    localStorage.setItem("sn-assessmentResults", JSON.stringify(resultObj));
-    localStorage.removeItem("sn-assessmentIntermediate");
-    setMode("results");
-    navigate("/results", { state: resultObj });
+    localStorage.setItem('sn-assessmentResults', JSON.stringify(resultObj));
+    localStorage.removeItem('sn-assessmentIntermediate');
+    setMode('results');
+    navigate('/results', { state: resultObj });
   };
 
   const handleRestart = () => {
-    localStorage.removeItem("sn-assessmentResults");
-    localStorage.removeItem("sn-assessmentIntermediate");
+    localStorage.removeItem('sn-assessmentResults');
+    localStorage.removeItem('sn-assessmentIntermediate');
     setAnswers(new Set());
     setStep(0);
-    setMode("quiz");
+    setMode('quiz');
   };
 
   const handleShowResults = () => {
-    const stored = localStorage.getItem("sn-assessmentResults");
+    const stored = localStorage.getItem('sn-assessmentResults');
     if (stored) {
       const parsed = JSON.parse(stored);
-      navigate("/results", { state: { answers: parsed.answers } });
+      navigate('/results', { state: { answers: parsed.answers } });
     }
   };
 
@@ -115,27 +112,23 @@ const AssessmentPage = () => {
         <div className="mb-6">
           <div className="flex justify-between mb-1">
             <span className="text-sm font-medium text-gray-700">Progress</span>
-            <span className="text-sm font-medium text-gray-700">
-              {mode === "quiz" ? `${percent}%` : "0%"}
-            </span>
+            <span className="text-sm font-medium text-gray-700">{mode === 'quiz' ? `${percent}%` : '0%'}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div
               className="progress-bar bg-blue-600 h-2.5 rounded-full"
-              style={{ width: mode === "quiz" ? `${percent}%` : "0%" }}
+              style={{ width: mode === 'quiz' ? `${percent}%` : '0%' }}
             ></div>
           </div>
         </div>
 
-        {mode === "results" ? (
+        {mode === 'results' ? (
           <div className="text-center py-8" id="restart-screen">
             <div className="mb-6">
               <i className="fas fa-check-circle text-green-500 text-5xl"></i>
             </div>
             <CardTitle>You've already completed the assessment.</CardTitle>
-            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-              Would you like to start the assessment again?
-            </p>
+            <p className="text-gray-600 mb-6 max-w-lg mx-auto">Would you like to start the assessment again?</p>
             <div className="flex justify-center gap-4">
               <button
                 onClick={handleRestart}
@@ -151,18 +144,15 @@ const AssessmentPage = () => {
               </button>
             </div>
           </div>
-        ) : mode === "intro" ? (
+        ) : mode === 'intro' ? (
           <div className="text-center py-8" id="intro-screen">
             <div className="mb-6">
               <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">
-              Ready to Discover Your Communication Style?
-            </h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h3>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">
-              This assessment consists of {total} sections representing different communication
-              dimentions. There are no right or wrong answers - just select the option that best
-              describes your natural tendencies.
+              This assessment consists of {total} sections representing different communication dimentions. There are no
+              right or wrong answers - just select the option that best describes your natural tendencies.
             </p>
             <button
               onClick={handleStart}
@@ -215,7 +205,7 @@ const AssessmentPage = () => {
                   type="submit"
                   disabled={answers.size === 0}
                   className={`px-4 py-2 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition duration-300 ${
-                    answers.size === 0 ? "opacity-50 cursor-not-allowed" : ""
+                    answers.size === 0 ? 'opacity-50 cursor-not-allowed' : ''
                   } cursor-pointer`}
                 >
                   Submit <i className="fas fa-paper-plane ml-2"></i>

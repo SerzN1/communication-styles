@@ -1,6 +1,6 @@
-import { Card, CardTitle } from "../../components/toolkit";
-import { StyleKey, styleMeta } from "../../data/assessment";
-import { getStylePercentage } from "../../utils";
+import { Card, CardTitle } from '../../components/toolkit';
+import { StyleKey, styleMeta } from '../../data/assessment';
+import { getStylePercentage } from '../../utils';
 
 function BreakdownTable({ scores }: { scores: Record<StyleKey, number> }) {
   return (
@@ -20,9 +20,7 @@ function BreakdownTable({ scores }: { scores: Record<StyleKey, number> }) {
               .sort((a, b) => scores[b] - scores[a])
               .map((style) => (
                 <tr key={style}>
-                  <td className={`py-3 px-4 capitalize font-semibold ${styleMeta[style].color}`}>
-                    {style}
-                  </td>
+                  <td className={`py-3 px-4 capitalize font-semibold ${styleMeta[style].color}`}>{style}</td>
                   <td className="py-3 px-4">{scores[style]}</td>
                   <td className="py-3 px-4">{getStylePercentage(scores, style)}%</td>
                 </tr>

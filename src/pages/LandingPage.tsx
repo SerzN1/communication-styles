@@ -5,9 +5,9 @@ import {
   HeroSection,
   IntroCardsSection,
   WhyUnderstandingSection,
-} from "../components/landing";
-import { CTA } from "../components/toolkit";
-import { useScrollToTop } from "../hooks";
+} from '../components/landing';
+import { CTA } from '../components/toolkit';
+import { useScrollToTop } from '../hooks';
 
 const LandingPage = () => {
   useScrollToTop();

@@ -1,15 +1,10 @@
-import { useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import BreakdownTable from "../components/results/BreakdownTable";
-import {
-  formatMultiWinnersText,
-  formatSingleWinnerText,
-  getScores,
-  getWinners,
-} from "../components/results/utils";
-import { Card, CardTitle, H1 } from "../components/toolkit";
-import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from "../data/assessment";
-import { useScrollToTop } from "../hooks";
+import { useEffect, useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import BreakdownTable from '../components/results/BreakdownTable';
+import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from '../components/results/utils';
+import { Card, CardTitle, H1 } from '../components/toolkit';
+import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from '../data/assessment';
+import { useScrollToTop } from '../hooks';
 
 function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
   return (
@@ -19,8 +14,7 @@ function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
           <span className="block text-7xl mb-12">
             <i className="fas fa-microscope text-orange-500"></i>
           </span>
-          We cannot find your assessment results{" "}
-          <span className="text-blue-600 text-nowrap"> :(</span>
+          We cannot find your assessment results <span className="text-blue-600 text-nowrap"> :(</span>
         </H1>
         <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
           Please complete the assessment to see your communication style analysis.
@@ -38,8 +32,7 @@ function NoWinnersCard({ onGoToAssessment }: { onGoToAssessment: () => void }) {
 
 function SingleWinnerCard({ winner }: { winner: StyleKey }) {
   const { icon, color, label } = styleMeta[winner] || {};
-  const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } =
-    styleInfo[winner] || {};
+  const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};
   return (
     <div className="text-center mb-12">
       <H1 className="mb-12">
@@ -127,9 +120,8 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
         {winners.map((style) => (
           <Card key={style}>
             <CardTitle>
-              <i className={styleMeta[style].icon + " mr-2"}></i>
-              When <span className={styleMeta[style].color}>{styleMeta[style].label}</span> Style
-              Shines
+              <i className={styleMeta[style].icon + ' mr-2'}></i>
+              When <span className={styleMeta[style].color}>{styleMeta[style].label}</span> Style Shines
             </CardTitle>
             <ul className="space-y-2 text-gray-600">
               {styleInfo[style].strengths.map((s, i) => (
@@ -138,9 +130,8 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
             </ul>
             <div className="mt-8">
               <CardTitle>
-                <i className={styleMeta[style].icon + " mr-2"}></i>
-                How <span className={styleMeta[style].color}>{styleMeta[style].label}</span> might
-                be perceived
+                <i className={styleMeta[style].icon + ' mr-2'}></i>
+                How <span className={styleMeta[style].color}>{styleMeta[style].label}</span> might be perceived
               </CardTitle>
               <ul className="space-y-2 text-gray-600 mt-2">
                 <li>{styleInfo[style].othersView}</li>
@@ -153,9 +144,7 @@ function MultiWinnersCard({ winners }: { winners: StyleKey[] }) {
             <i className="fas fa-sync-alt text-purple-500 mr-2"></i>Adapting Your Communication
           </CardTitle>
           <ul className="space-y-2 text-gray-700">
-            {winners.map((style) =>
-              styleInfo[style].adapting.map((tip, i) => <li key={style + i}>• {tip}</li>),
-            )}
+            {winners.map((style) => styleInfo[style].adapting.map((tip, i) => <li key={style + i}>• {tip}</li>))}
           </ul>
         </Card>
         <Card className="!bg-yellow-50">
@@ -177,7 +166,7 @@ const ResultsPage = () => {
 
   const answers = useMemo(() => {
     if (location.state?.answers) return location.state.answers;
-    const stored = localStorage.getItem("sn-assessmentResults");
+    const stored = localStorage.getItem('sn-assessmentResults');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
@@ -196,24 +185,24 @@ const ResultsPage = () => {
     if (
       (!answers ||
         (Array.isArray(answers) && answers.length === 0) ||
-        (typeof answers === "object" && Object.keys(answers).length === 0)) &&
+        (typeof answers === 'object' && Object.keys(answers).length === 0)) &&
       winners.length === 0
     ) {
-      localStorage.removeItem("sn-assessmentResults");
-      navigate("/assessment", { replace: true });
+      localStorage.removeItem('sn-assessmentResults');
+      navigate('/assessment', { replace: true });
     }
     if (winners.length > 0) {
-      localStorage.setItem("sn-assessmentResults", JSON.stringify({ answers, scores, winners }));
+      localStorage.setItem('sn-assessmentResults', JSON.stringify({ answers, scores, winners }));
     }
   }, [answers, scores, winners, navigate]);
 
   const handleRetake = () => {
-    localStorage.removeItem("sn-assessmentResults");
-    navigate("/assessment");
+    localStorage.removeItem('sn-assessmentResults');
+    navigate('/assessment');
   };
 
   const handleGoToAssessment = () => {
-    navigate("/assessment");
+    navigate('/assessment');
   };
 
   const downloadResults = () => {
@@ -223,11 +212,11 @@ const ResultsPage = () => {
     } else {
       text = formatMultiWinnersText(winners, scores);
     }
-    const blob = new Blob([text], { type: "text/plain" });
+    const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     a.href = url;
-    a.download = "communication-style-results.txt";
+    a.download = 'communication-style-results.txt';
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -238,11 +227,7 @@ const ResultsPage = () => {
 
   return (
     <section id="results" className="page">
-      {winners.length === 1 ? (
-        <SingleWinnerCard winner={winners[0]} />
-      ) : (
-        <MultiWinnersCard winners={winners} />
-      )}
+      {winners.length === 1 ? <SingleWinnerCard winner={winners[0]} /> : <MultiWinnersCard winners={winners} />}
 
       {/* Breakdown */}
       <BreakdownTable scores={scores} />

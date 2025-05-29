@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -22,19 +21,19 @@ const NavBar = () => {
           <div className="hidden md:flex items-center space-x-1">
             <Link
               to="/"
-              className={`py-4 px-2 font-medium ${isActivePath("/") ? "text-blue-500 border-b-4 border-blue-500" : "text-gray-500 hover:text-blue-500"} transition duration-300`}
+              className={`py-4 px-2 font-medium ${isActivePath('/') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}
             >
               Home
             </Link>
             <Link
               to="/assessment"
-              className={`py-4 px-2 font-medium ${isActivePath("/assessment") ? "text-blue-500 border-b-4 border-blue-500" : "text-gray-500 hover:text-blue-500"} transition duration-300`}
+              className={`py-4 px-2 font-medium ${isActivePath('/assessment') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}
             >
               Assessment
             </Link>
             <Link
               to="/about"
-              className={`py-4 px-2 font-medium ${isActivePath("/about") ? "text-blue-500 border-b-4 border-blue-500" : "text-gray-500 hover:text-blue-500"} transition duration-300`}
+              className={`py-4 px-2 font-medium ${isActivePath('/about') ? 'text-blue-500 border-b-4 border-blue-500' : 'text-gray-500 hover:text-blue-500'} transition duration-300`}
             >
               About
             </Link>
@@ -51,13 +50,13 @@ const NavBar = () => {
         </div>
       </div>
       {/* Mobile Menu */}
-      <div className={`${mobileOpen ? "" : "hidden"} mobile-menu md:hidden`}>
+      <div className={`${mobileOpen ? '' : 'hidden'} mobile-menu md:hidden`}>
         <ul>
           <li>
             <Link
               to="/"
               onClick={() => setMobileOpen(false)}
-              className={`block text-sm px-2 py-4 ${isActivePath("/") ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"} transition duration-300`}
+              className={`block text-sm px-2 py-4 ${isActivePath('/') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}
             >
               Home
             </Link>
@@ -66,7 +65,7 @@ const NavBar = () => {
             <Link
               to="/assessment"
               onClick={() => setMobileOpen(false)}
-              className={`block text-sm px-2 py-4 ${isActivePath("/assessment") ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"} transition duration-300`}
+              className={`block text-sm px-2 py-4 ${isActivePath('/assessment') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}
             >
               Assessment
             </Link>
@@ -75,7 +74,7 @@ const NavBar = () => {
             <Link
               to="/about"
               onClick={() => setMobileOpen(false)}
-              className={`block text-sm px-2 py-4 ${isActivePath("/about") ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"} transition duration-300`}
+              className={`block text-sm px-2 py-4 ${isActivePath('/about') ? 'bg-blue-500 text-white' : 'hover:bg-blue-500 hover:text-white'} transition duration-300`}
             >
               About
             </Link>

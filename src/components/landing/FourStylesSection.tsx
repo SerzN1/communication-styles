@@ -1,5 +1,5 @@
-import { StyleKey, styleMeta } from "../../data/assessment";
-import { Card, H2 } from "../toolkit";
+import { StyleKey, styleMeta } from '../../data/assessment';
+import { Card, H2 } from '../toolkit';
 
 const FourStylesSection = () => (
   <section className="mb-20">
@@ -13,7 +13,7 @@ const FourStylesSection = () => (
           <Card key={card.label}>
             <div className="text-center mb-4">
               <div className={`${card.bg} inline-flex p-4 rounded-full`}>
-                <i className={card.icon + " text-2xl"}></i>
+                <i className={card.icon + ' text-2xl'}></i>
               </div>
             </div>
             <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{card.title}</h3>

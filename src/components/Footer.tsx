@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 sm:px-6 lg:px-8">
@@ -7,8 +7,7 @@ const Footer = () => (
         <div>
           <h3 className="text-lg font-semibold mb-4">CommStyle</h3>
           <p className="text-gray-400 text-sm">
-            Helping individuals and organizations communicate more effectively through science-based
-            assessments.
+            Helping individuals and organizations communicate more effectively through science-based assessments.
           </p>
         </div>
         <div>

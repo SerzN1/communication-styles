@@ -1,29 +1,29 @@
-import { Card, H2 } from "../toolkit";
+import { Card, H2 } from '../toolkit';
 
 const whyCards = [
   {
-    icon: "fas fa-bullseye text-blue-600",
-    bg: "bg-blue-100",
-    title: "Improved Clarity",
-    desc: "Communicate your ideas more effectively by understanding your natural communication patterns.",
+    icon: 'fas fa-bullseye text-blue-600',
+    bg: 'bg-blue-100',
+    title: 'Improved Clarity',
+    desc: 'Communicate your ideas more effectively by understanding your natural communication patterns.',
   },
   {
-    icon: "fas fa-handshake text-red-600",
-    bg: "bg-red-100",
-    title: "Better Relationships",
-    desc: "Build stronger connections by adapting your style to work better with others.",
+    icon: 'fas fa-handshake text-red-600',
+    bg: 'bg-red-100',
+    title: 'Better Relationships',
+    desc: 'Build stronger connections by adapting your style to work better with others.',
   },
   {
-    icon: "fas fa-chart-line text-green-600",
-    bg: "bg-green-100",
-    title: "Professional Growth",
-    desc: "Enhance your leadership and collaboration skills in workplace settings.",
+    icon: 'fas fa-chart-line text-green-600',
+    bg: 'bg-green-100',
+    title: 'Professional Growth',
+    desc: 'Enhance your leadership and collaboration skills in workplace settings.',
   },
   {
-    icon: "fas fa-lightbulb text-yellow-600",
-    bg: "bg-yellow-100",
-    title: "Self-Awareness",
-    desc: "Gain insights into your communication strengths and areas for development.",
+    icon: 'fas fa-lightbulb text-yellow-600',
+    bg: 'bg-yellow-100',
+    title: 'Self-Awareness',
+    desc: 'Gain insights into your communication strengths and areas for development.',
   },
 ];
 

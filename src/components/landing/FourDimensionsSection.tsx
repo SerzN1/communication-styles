@@ -1,53 +1,53 @@
-import { Card, H2 } from "../toolkit";
+import { Card, H2 } from '../toolkit';
 
 const styleCards = [
   {
-    icon: "fas fa-comment-dots text-yellow-500",
-    title: "Verbal Communication",
-    subtitle: "What you say and how you express ideas",
+    icon: 'fas fa-comment-dots text-yellow-500',
+    title: 'Verbal Communication',
+    subtitle: 'What you say and how you express ideas',
     details: [
-      { icon: "fas fa-microphone-alt", text: "Speaking patterns and word choice" },
-      { icon: "fas fa-pen-nib", text: "Writing style and precision" },
-      { icon: "fas fa-ear-listen", text: "Listening and comprehension approach" },
-      { icon: "fas fa-book", text: "Information processing preferences" },
+      { icon: 'fas fa-microphone-alt', text: 'Speaking patterns and word choice' },
+      { icon: 'fas fa-pen-nib', text: 'Writing style and precision' },
+      { icon: 'fas fa-ear-listen', text: 'Listening and comprehension approach' },
+      { icon: 'fas fa-book', text: 'Information processing preferences' },
     ],
-    bg: "bg-yellow-100",
+    bg: 'bg-yellow-100',
   },
   {
-    icon: "fas fa-music text-blue-500",
-    title: "Paraverbal Communication",
-    subtitle: "How you deliver your message",
+    icon: 'fas fa-music text-blue-500',
+    title: 'Paraverbal Communication',
+    subtitle: 'How you deliver your message',
     details: [
-      { icon: "fas fa-volume-up", text: "Volume and tone variations" },
-      { icon: "fas fa-bolt", text: "Speaking pace and rhythm" },
-      { icon: "fas fa-theater-masks", text: "Vocal inflection and emotion" },
-      { icon: "fas fa-landmark", text: "Formality level in speech" },
+      { icon: 'fas fa-volume-up', text: 'Volume and tone variations' },
+      { icon: 'fas fa-bolt', text: 'Speaking pace and rhythm' },
+      { icon: 'fas fa-theater-masks', text: 'Vocal inflection and emotion' },
+      { icon: 'fas fa-landmark', text: 'Formality level in speech' },
     ],
-    bg: "bg-blue-100",
+    bg: 'bg-blue-100',
   },
   {
-    icon: "fas fa-handshake text-green-500",
-    title: "Body Language",
-    subtitle: "Non-verbal expression and presence",
+    icon: 'fas fa-handshake text-green-500',
+    title: 'Body Language',
+    subtitle: 'Non-verbal expression and presence',
     details: [
-      { icon: "fas fa-eye", text: "Eye contact and facial expressions" },
-      { icon: "fas fa-hands", text: "Gestures and hand movements" },
-      { icon: "fas fa-person-walking", text: "Posture and body positioning" },
-      { icon: "fas fa-hand-paper", text: "Physical touch preferences" },
+      { icon: 'fas fa-eye', text: 'Eye contact and facial expressions' },
+      { icon: 'fas fa-hands', text: 'Gestures and hand movements' },
+      { icon: 'fas fa-person-walking', text: 'Posture and body positioning' },
+      { icon: 'fas fa-hand-paper', text: 'Physical touch preferences' },
     ],
-    bg: "bg-green-100",
+    bg: 'bg-green-100',
   },
   {
-    icon: "fas fa-house-user text-red-500",
-    title: "Personal Space",
-    subtitle: "Environment and spatial preferences",
+    icon: 'fas fa-house-user text-red-500',
+    title: 'Personal Space',
+    subtitle: 'Environment and spatial preferences',
     details: [
-      { icon: "fas fa-briefcase", text: "Workspace organization style" },
-      { icon: "fas fa-ruler-horizontal", text: "Physical distance preferences" },
-      { icon: "fas fa-image", text: "Personal item display choices" },
-      { icon: "fas fa-laptop", text: "Virtual environment setup" },
+      { icon: 'fas fa-briefcase', text: 'Workspace organization style' },
+      { icon: 'fas fa-ruler-horizontal', text: 'Physical distance preferences' },
+      { icon: 'fas fa-image', text: 'Personal item display choices' },
+      { icon: 'fas fa-laptop', text: 'Virtual environment setup' },
     ],
-    bg: "bg-red-100",
+    bg: 'bg-red-100',
   },
 ];
 
@@ -64,7 +64,7 @@ const FourDimensionsSection = () => (
     <div className="grid md:grid-cols-2 gap-6">
       {styleCards.map((card) => (
         <Card key={card.title}>
-          <div className={`mb-6 flex`}>
+          <div className="mb-6 flex">
             <div className={`${card.bg} inline-flex p-4 rounded-full mb-4`}>
               <i className={`${card.icon} text-3xl`}></i>
             </div>

@@ -1,4 +1,4 @@
-import { ChangeEventHandler, KeyboardEvent, ChangeEvent } from "react";
+import { ChangeEventHandler, KeyboardEvent, ChangeEvent } from 'react';
 
 interface AssessmentOptionProps {
   id: string;
@@ -8,13 +8,7 @@ interface AssessmentOptionProps {
   option: string;
 }
 
-export default function AssessmentOption({
-  id,
-  checked,
-  onChange,
-  color,
-  option,
-}: AssessmentOptionProps) {
+export default function AssessmentOption({ id, checked, onChange, color, option }: AssessmentOptionProps) {
   return (
     <div className="flex items-center gap-4">
       <input
@@ -31,11 +25,11 @@ export default function AssessmentOption({
         htmlFor={id}
         id={`${id}-label`}
         className={`flex-1 cursor-pointer px-3 sm:px-4 py-3 rounded-lg border border-gray-300 text-gray-700 font-medium transition duration-200
-          ${checked ? "bg-blue-100 border-blue-400" : "hover:bg-blue-50"}
+          ${checked ? 'bg-blue-100 border-blue-400' : 'hover:bg-blue-50'}
         `}
         tabIndex={0}
         onKeyDown={(e: KeyboardEvent<HTMLLabelElement>) => {
-          if (e.key === " " || e.key === "Enter") {
+          if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             onChange(e as unknown as ChangeEvent<HTMLInputElement>);
           }
@@ -46,7 +40,7 @@ export default function AssessmentOption({
       >
         <span
           className={`mr-3 inline-block w-7 h-7 rounded border-2 border-gray-300 align-middle text-center ${
-            checked ? `${color} ring-2 ring-blue-400 bg-blue-50` : ""
+            checked ? `${color} ring-2 ring-blue-400 bg-blue-50` : ''
           }`}
           aria-hidden="true"
         >

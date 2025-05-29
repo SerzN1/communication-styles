@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface CTAProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   to?: string;
@@ -8,8 +8,8 @@ interface CTAProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const CTA = ({ to = "/assessment", children, className = "", ...props }: CTAProps) => (
-  <div className={"text-center mb-20 " + className}>
+const CTA = ({ to = '/assessment', children, className = '', ...props }: CTAProps) => (
+  <div className={'text-center mb-20 ' + className}>
     <Link to={to}>
       <button
         className="bg-blue-600 text-white px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm hover:bg-blue-700 transition duration-300 inline-flex items-center cursor-pointer"
