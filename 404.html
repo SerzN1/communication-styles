@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=/communication-styles/" />
   </head>
   <body>
     <script>
-      // Redirect all requests to the root, preserving the path for the SPA router
+      // Only redirect if not already at the root
       var l = window.location;
-      var path = l.pathname.replace(/^\/communication-styles/, '');
-      window.location.replace('/communication-styles/' + (path + l.search + l.hash));
+      var base = '/communication-styles';
+      var path = l.pathname.replace(new RegExp('^' + base), '');
+      if (l.pathname !== base + '/' && l.pathname !== base) {
+        window.location.replace(base + '/' + (path.replace(/^\/+/, '') + l.search + l.hash));
+      }
     </script>
   </body>
 </html>
@@ -16,4 +20,5 @@
   This file is used to redirect all requests to the root of the application.
   It is necessary for single-page applications (SPAs) to handle routing correctly.
   The script preserves the path, search parameters, and hash for the SPA router.
+  It also prevents infinite redirect loops.
 -->
