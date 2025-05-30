@@ -6,11 +6,12 @@ Communication Styles Assessment is a web application that helps users identify t
 
 ## Tech Stack
 
-- **Frontend:** React (with functional components and hooks)
+- **Frontend:** Preact (with functional components and hooks)
 - **Build Tool:** Vite for fast development and optimized builds
 - **Styling:** Tailwind CSS for utility-first, responsive design
-- **Routing:** React Router for seamless navigation
+- **Routing:** React Router (compatible with Preact) for seamless navigation
 - **Linting:** ESLint for code quality and consistency
+- **Formatting:** Prettier for consistent code style
 - **Deployment:** GitHub Pages (via the `gh-pages` npm package)
 
 ## Contribution
@@ -40,7 +41,11 @@ To set up the project locally:
    ```sh
    npm run lint
    ```
-4. Build for production:
+4. Format your code:
+   ```sh
+   npm run format
+   ```
+5. Build for production:
    ```sh
    npm run build
    ```
@@ -49,11 +54,7 @@ To set up the project locally:
 
 To deploy a new version of the app:
 
-1. Build the production version:
-   ```sh
-   npm run build
-   ```
-2. Deploy to GitHub Pages:
+1. Deploy to GitHub Pages (build and 404.html copy are handled automatically):
    ```sh
    npm run deploy
    ```
