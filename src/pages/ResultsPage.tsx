@@ -233,18 +233,26 @@ const ResultsPage = () => {
       <BreakdownTable scores={scores} />
 
       {/* Buttons */}
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-12 gap-4">
         <button
           onClick={handleRetake}
-          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 mr-4 cursor-pointer"
+          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 w-full sm:w-auto"
+          aria-label="Retake Assessment"
+          type="button"
         >
-          <i className="fas fa-redo mr-2"></i> Retake Assessment
+          <i className="fas fa-redo mr-2" aria-hidden="true"></i>
+          <span className="inline sm:hidden">Retry</span>
+          <span className="hidden sm:inline">Retake Assessment</span>
         </button>
         <button
           onClick={downloadResults}
-          className="px-6 py-3 border bg-gray-100 border-gray-300 text-gray-700 font-medium rounded-lg hover:border-gray-500 transition duration-300 cursor-pointer"
+          className="px-6 py-3 border bg-gray-100 border-gray-300 text-gray-700 font-medium rounded-lg hover:border-gray-500 transition duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 w-full sm:w-auto"
+          aria-label="Download Results as Text File"
+          type="button"
         >
-          <i className="fas fa-download mr-2"></i> Download Results
+          <i className="fas fa-download mr-2" aria-hidden="true"></i>
+          <span className="inline sm:hidden">Download</span>
+          <span className="hidden sm:inline">Download Results</span>
         </button>
       </div>
     </section>

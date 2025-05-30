@@ -7,7 +7,7 @@ import { Card, CardTitle } from '../toolkit';
 */
 
 const IntroCardsSection = () => (
-  <section className="w-full max-w-5xl mb-10">
+  <section className="mb-10">
     <Card>
       <CardTitle>Why Communication Styles Matter</CardTitle>
       <p className="text-gray-600 mb-6">

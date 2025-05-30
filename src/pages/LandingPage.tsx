@@ -15,7 +15,6 @@ const LandingPage = () => {
   return (
     <div className="page">
       <HeroSection />
-      <CTA>Start the Assessment</CTA>
       <IntroCardsSection />
       <CTA>Take the Assessment Now</CTA>
       <WhyUnderstandingSection />

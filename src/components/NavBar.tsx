@@ -41,7 +41,7 @@ const NavBar = () => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
-              className="outline-none mobile-menu-button px-4 py-4 -mr-4 cursor-pointer"
+              className="mobile-menu-button px-4 py-4 -mr-4 cursor-pointer"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               <i className="fas fa-bars text-gray-500 text-xl"></i>
