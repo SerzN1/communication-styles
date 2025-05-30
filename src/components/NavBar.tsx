@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'preact/hooks';
 import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
@@ -43,8 +43,10 @@ const NavBar = () => {
             <button
               className="mobile-menu-button px-4 py-4 -mr-4 cursor-pointer"
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              title={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              <i className="fas fa-bars text-gray-500 text-xl"></i>
+              <i className="fas fa-bars text-gray-500 text-xl" aria-hidden="true"></i>
             </button>
           </div>
         </div>

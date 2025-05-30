@@ -40,7 +40,7 @@ const WhyUnderstandingSection = () => (
               <i className={`${card.icon} text-2xl`}></i>
             </div>
           </div>
-          <h4 className="text-lg font-semibold text-center text-gray-800 mb-2">{card.title}</h4>
+          <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{card.title}</h3>
           <p className="text-gray-600 text-sm">{card.desc}</p>
         </Card>
       ))}

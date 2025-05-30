@@ -1,9 +1,7 @@
-import { ChangeEventHandler, KeyboardEvent, ChangeEvent } from 'react';
-
 interface AssessmentOptionProps {
   id: string;
   checked: boolean;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange: (e: Event) => void;
   color: string;
   option: string;
 }
@@ -28,10 +26,10 @@ export default function AssessmentOption({ id, checked, onChange, color, option 
           ${checked ? 'bg-blue-100 border-blue-400' : 'hover:bg-blue-50'}
         `}
         tabIndex={0}
-        onKeyDown={(e: KeyboardEvent<HTMLLabelElement>) => {
+        onKeyDown={(e) => {
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
-            onChange(e as unknown as ChangeEvent<HTMLInputElement>);
+            onChange(e as unknown as Event);
           }
         }}
         aria-pressed={checked}
