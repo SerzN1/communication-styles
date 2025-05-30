@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/communication-styles/" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/communication-styles/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Communication Styles Assessment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module" crossorigin src="/communication-styles/assets/index-DFlllmr4.js"></script>
+    <link rel="stylesheet" crossorigin href="/communication-styles/assets/index-D4pG8fKR.css">
   </head>
   <body>
-    <script>
-      // Only redirect if not already at the root
-      var l = window.location;
-      var base = '/communication-styles';
-      var path = l.pathname.replace(new RegExp('^' + base), '');
-      if (l.pathname !== base + '/' && l.pathname !== base) {
-        window.location.replace(base + '/' + (path.replace(/^\/+/, '') + l.search + l.hash));
-      }
-    </script>
+    <div id="root"></div>
   </body>
 </html>
-<!--
-  This file is used to redirect all requests to the root of the application.
-  It is necessary for single-page applications (SPAs) to handle routing correctly.
-  The script preserves the path, search parameters, and hash for the SPA router.
-  It also prevents infinite redirect loops.
--->
