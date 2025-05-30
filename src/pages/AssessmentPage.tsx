@@ -125,9 +125,7 @@ const AssessmentPage = () => {
 
         {mode === 'results' ? (
           <div className="text-center py-8" id="restart-screen">
-            <div className="mb-6">
-              <FaCircleCheck className="text-green-500 text-5xl" />
-            </div>
+            <FaCircleCheck className="text-green-500 text-5xl mb-6 block mx-auto" />
             <CardTitle>You've already completed the assessment.</CardTitle>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">Would you like to start the assessment again?</p>
             <div className="flex justify-center gap-4">
@@ -147,9 +145,7 @@ const AssessmentPage = () => {
           </div>
         ) : mode === 'intro' ? (
           <div className="text-center py-8" id="intro-screen">
-            <div className="mb-6">
-              <FaCommentDots className="text-blue-500 text-5xl" />
-            </div>
+            <FaCommentDots className="text-blue-500 text-5xl mb-6 block mx-auto" />
             <h2 className="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h2>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">
               This assessment consists of {total} sections representing different communication dimentions. There are no
