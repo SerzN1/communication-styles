@@ -37,9 +37,7 @@ const WhyUnderstandingSection = () => (
       {whyCards.map((card) => (
         <Card key={card.title}>
           <div className="text-center mb-4">
-            <div className={`${card.bg} inline-flex p-4 rounded-full text-3xl`}>
-              {card.icon}
-            </div>
+            <div className={`${card.bg} inline-flex p-4 rounded-full text-3xl`}>{card.icon}</div>
           </div>
           <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{card.title}</h3>
           <p className="text-gray-600 text-sm">{card.desc}</p>

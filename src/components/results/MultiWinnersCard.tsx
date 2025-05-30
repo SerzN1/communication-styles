@@ -44,11 +44,12 @@ const MultiWinnersCard = ({ winners }: MultiWinnersCardProps) => (
               <li>{othersView}</li>
             </ul>
           </div>
-        </Card>
+        </Card>;
       })}
       <Card className="!bg-blue-50">
         <CardTitle>
-          <FaRotate className="text-purple-500 mr-2 inline" />Adapting Your Communication
+          <FaRotate className="text-purple-500 mr-2 inline" />
+          Adapting Your Communication
         </CardTitle>
         <ul className="space-y-2 text-gray-700">
           {winners.map((style) => styleInfo[style].adapting.map((tip, i) => <li key={style + i}>• {tip}</li>))}
@@ -56,7 +57,8 @@ const MultiWinnersCard = ({ winners }: MultiWinnersCardProps) => (
       </Card>
       <Card className="!bg-yellow-50">
         <CardTitle>
-          <FaUserDoctor className="text-purple-500 mr-2 inline" />Psychologist's Recommendation:
+          <FaUserDoctor className="text-purple-500 mr-2 inline" />
+          Psychologist's Recommendation:
         </CardTitle>
         <p className="space-y-2 text-gray-700">{multiWinnersInfo.recommendation}</p>
       </Card>

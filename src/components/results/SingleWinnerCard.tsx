@@ -23,7 +23,8 @@ const SingleWinnerCard = ({ winner }: SingleWinnerCardProps) => {
       <div className="mt-12 grid md:grid-cols-2 gap-8 text-left">
         <Card>
           <CardTitle>
-            <FaHandFist className="text-red-500 mr-2 inline align-baseline" />Strengths
+            <FaHandFist className="text-red-500 mr-2 inline align-baseline" />
+            Strengths
           </CardTitle>
           <ul className="space-y-2 text-gray-600">
             {strengths.map((s, i) => (
@@ -33,7 +34,8 @@ const SingleWinnerCard = ({ winner }: SingleWinnerCardProps) => {
         </Card>
         <Card>
           <CardTitle>
-            <FaEyeSlash className="text-yellow-500 mr-2 inline align-baseline" />Blind Spots
+            <FaEyeSlash className="text-yellow-500 mr-2 inline align-baseline" />
+            Blind Spots
           </CardTitle>
           <ul className="space-y-2 text-gray-600">
             {blindSpots.map((s, i) => (
@@ -43,19 +45,22 @@ const SingleWinnerCard = ({ winner }: SingleWinnerCardProps) => {
         </Card>
         <Card className="!bg-gray-50">
           <CardTitle>
-            <FaUser className="text-green-500 mr-2 inline align-baseline" />How you see yourself
+            <FaUser className="text-green-500 mr-2 inline align-baseline" />
+            How you see yourself
           </CardTitle>
           <p className="text-gray-700">{selfView}</p>
         </Card>
         <Card className="!bg-gray-50">
           <CardTitle>
-            <FaUsers className="text-fuchsia-500 mr-2 inline align-baseline" />How others may see you
+            <FaUsers className="text-fuchsia-500 mr-2 inline align-baseline" />
+            How others may see you
           </CardTitle>
           <p className="text-gray-700">{othersView}</p>
         </Card>
         <Card className="!bg-blue-50">
           <CardTitle>
-            <FaLightbulb className="text-blue-400 mr-2 inline align-baseline" />Tips for Effective Communication
+            <FaLightbulb className="text-blue-400 mr-2 inline align-baseline" />
+            Tips for Effective Communication
           </CardTitle>
           <ul className="space-y-2 text-gray-700">
             {tips.map((tip, i) => (
@@ -65,7 +70,8 @@ const SingleWinnerCard = ({ winner }: SingleWinnerCardProps) => {
         </Card>
         <Card className="!bg-yellow-50">
           <CardTitle>
-            <FaUserMd className="text-purple-500 mr-2 inline align-baseline" />Psychologist's Recommendation:
+            <FaUserMd className="text-purple-500 mr-2 inline align-baseline" />
+            Psychologist's Recommendation:
           </CardTitle>
           <p className="space-y-2 text-gray-700">{recommendation}</p>
         </Card>

@@ -1,14 +1,30 @@
 import {
-  FaBolt, FaBook, FaBriefcase, FaCommentDots, FaEarListen, FaEye, FaHand, FaHands, FaHandshake, FaHouseUser, FaImage, FaLandmark, FaLaptop,
+  FaBolt,
+  FaBook,
+  FaBriefcase,
+  FaCommentDots,
+  FaEarListen,
+  FaEye,
+  FaHand,
+  FaHands,
+  FaHandshake,
+  FaHouseUser,
+  FaImage,
+  FaLandmark,
+  FaLaptop,
   FaMasksTheater,
-  FaMicrophone, FaMusic, FaPenNib, FaPersonWalking, FaRulerHorizontal,
-  FaVolumeHigh
+  FaMicrophone,
+  FaMusic,
+  FaPenNib,
+  FaPersonWalking,
+  FaRulerHorizontal,
+  FaVolumeHigh,
 } from 'react-icons/fa6';
 import { Card, H2 } from '../toolkit';
 
 const styleCards = [
   {
-    icon: <FaCommentDots className ="text-yellow-500" />,
+    icon: <FaCommentDots className="text-yellow-500" />,
     title: 'Verbal Communication',
     subtitle: 'What you say and how you express ideas',
     details: [
@@ -71,9 +87,7 @@ const FourDimensionsSection = () => (
       {styleCards.map((card) => (
         <Card key={card.title}>
           <div className="mb-6 flex">
-            <div className={`${card.bg} inline-flex p-4 rounded-full text-3xl`}>
-              {card.icon}
-            </div>
+            <div className={`${card.bg} inline-flex p-4 rounded-full text-3xl`}>{card.icon}</div>
           </div>
           <h3 className="text-3xl font-semibold text-gray-800 mb-2">{card.title}</h3>
           <p className="text-gray-500 text-md italic">{card.subtitle}</p>
