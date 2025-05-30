@@ -1,3 +1,5 @@
+import { FaCheck } from 'react-icons/fa6';
+
 interface AssessmentOptionProps {
   id: string;
   checked: boolean;
@@ -29,7 +31,7 @@ export default function AssessmentOption({ id, checked, onChange, color, option 
         onKeyDown={(e) => {
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
-            onChange(e as unknown as Event);
+            onChange(e as Event);
           }
         }}
         aria-pressed={checked}
@@ -43,7 +45,7 @@ export default function AssessmentOption({ id, checked, onChange, color, option 
           aria-hidden="true"
         >
           {checked ? (
-            <i className="fas fa-check text-lg flex items-center justify-center h-full w-full"></i>
+            <FaCheck className="text-lg flex items-center justify-center h-full w-full" />
           ) : (
             <span className="sr-only">Select</span>
           )}

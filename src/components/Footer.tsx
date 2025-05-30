@@ -1,3 +1,4 @@
+import { FaFacebookF, FaInstagram, FaInternetExplorer, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
@@ -82,28 +83,29 @@ const Footer = () => (
               className="text-gray-400 hover:text-white transition duration-300"
               aria-label="Visit Mnyalu Safaris website"
             >
-              <i className="fab fa-internet-explorer"></i>
+              <FaInternetExplorer />
             </a>
             <a
               href="https://web.facebook.com/Mnyalu-Safaris-100217801339589"
               className="text-gray-400 hover:text-white transition duration-300"
               aria-label="Mnyalu Safaris Facebook page"
             >
-              <i className="fab fa-facebook-f"></i>
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://www.instagram.com/mnyalusafaris/"
+              className="text-gray-400 hover:text-white transition duration-300"
+              aria-label="Mnyalu Safaris Instagram profile"
+            >
+              <FaInstagram />
             </a>
             <a
               href="https://www.linkedin.com/in/serzn1"
               className="text-gray-400 hover:text-white transition duration-300"
               aria-label="LinkedIn profile"
             >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/mnyalusafaris/"
-              className="text-gray-400 hover:text-white transition duration-300"
-              aria-label="Mnyalu Safaris Instagram profile"
-            >
-              <i className="fab fa-instagram"></i>
+              <FaLinkedinIn />
             </a>
           </div>
           <p className="text-gray-400 text-sm mt-4">bob_s@list.ru</p>

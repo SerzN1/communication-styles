@@ -1,3 +1,4 @@
+import { FaHouse } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { Card, CardTitle, H1, H3 } from '../components/toolkit';
 import { useScrollToTop } from '../hooks';
@@ -6,7 +7,7 @@ const AboutPage = () => {
   useScrollToTop();
 
   return (
-    <section id="about" className="page mx-auto">
+    <section id="about" className="page">
       <div className="text-center mb-12">
         <H1>
           About <span className="text-blue-600">Communication Styles</span>
@@ -117,7 +118,7 @@ const AboutPage = () => {
           to="/"
           className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 nav-link"
         >
-          <i className="fas fa-home mr-2"></i> Back to Home
+          <FaHouse className="mr-2" /> Back to Home
         </Link>
       </div>
     </section>

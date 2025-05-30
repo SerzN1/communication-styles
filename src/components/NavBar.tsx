@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import { FaBars, FaComments } from 'react-icons/fa6';
 import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
           <div className="flex space-x-7">
             <div>
               <Link to="/" className="flex items-center py-4 px-2">
-                <i className="fas fa-comments text-blue-500 text-2xl mr-2"></i>
+                <FaComments className="text-blue-500 text-2xl mr-2" />
                 <span className="font-semibold text-gray-900 text-lg">CommStyle</span>
               </Link>
             </div>
@@ -46,7 +47,7 @@ const NavBar = () => {
               aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
               title={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              <i className="fas fa-bars text-gray-500 text-xl" aria-hidden="true"></i>
+              <FaBars className="text-gray-500 text-xl" aria-hidden="true" />
             </button>
           </div>
         </div>

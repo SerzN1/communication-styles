@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
+import { FaArrowLeft, FaArrowRight, FaCircleCheck, FaCommentDots, FaPaperPlane } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
@@ -98,7 +99,7 @@ const AssessmentPage = () => {
   };
 
   return (
-    <section id="assessment" className="page mx-auto">
+    <section id="assessment" className="page">
       <div className="text-center mb-8">
         <H1>
           Communication Style <span className="text-blue-600">Assessment</span>
@@ -125,7 +126,7 @@ const AssessmentPage = () => {
         {mode === 'results' ? (
           <div className="text-center py-8" id="restart-screen">
             <div className="mb-6">
-              <i className="fas fa-check-circle text-green-500 text-5xl"></i>
+              <FaCircleCheck className="text-green-500 text-5xl" />
             </div>
             <CardTitle>You've already completed the assessment.</CardTitle>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">Would you like to start the assessment again?</p>
@@ -147,9 +148,9 @@ const AssessmentPage = () => {
         ) : mode === 'intro' ? (
           <div className="text-center py-8" id="intro-screen">
             <div className="mb-6">
-              <i className="fas fa-comment-dots text-blue-500 text-5xl"></i>
+              <FaCommentDots className="text-blue-500 text-5xl" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h3>
+            <h2 className="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h2>
             <p className="text-gray-600 mb-6 max-w-lg mx-auto">
               This assessment consists of {total} sections representing different communication dimentions. There are no
               right or wrong answers - just select the option that best describes your natural tendencies.
@@ -189,7 +190,7 @@ const AssessmentPage = () => {
                 disabled={step === 0}
                 className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-300 disabled:opacity-50 cursor-pointer"
               >
-                <i className="fas fa-arrow-left mr-2"></i> Previous
+                <FaArrowLeft className="mr-2 inline align-text-top" /> Previous
               </button>
               {step < total - 1 && (
                 <button
@@ -197,7 +198,7 @@ const AssessmentPage = () => {
                   onClick={handleNext}
                   className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
                 >
-                  Next <i className="fas fa-arrow-right ml-2"></i>
+                  Next <FaArrowRight className="ml-2 inline align-text-top" />
                 </button>
               )}
               {step === total - 1 && (
@@ -208,7 +209,7 @@ const AssessmentPage = () => {
                     answers.size === 0 ? 'opacity-50 cursor-not-allowed' : ''
                   } cursor-pointer`}
                 >
-                  Submit <i className="fas fa-paper-plane ml-2"></i>
+                  Submit <FaPaperPlane className="ml-2 inline align-text-top" />
                 </button>
               )}
             </div>

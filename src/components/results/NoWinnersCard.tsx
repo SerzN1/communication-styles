@@ -1,3 +1,4 @@
+import { FaArrowRight, FaMicroscope } from 'react-icons/fa6';
 import { H1 } from '../toolkit';
 
 interface NoWinnersCardProps {
@@ -9,7 +10,7 @@ const NoWinnersCard = ({ onGoToAssessment }: NoWinnersCardProps) => (
     <div className="text-center mb-12">
       <H1 className="mb-12">
         <span className="block text-7xl mb-12">
-          <i className="fas fa-microscope text-orange-500"></i>
+          <FaMicroscope className="text-orange-500" />
         </span>
         We cannot find your assessment results <span className="text-blue-600 text-nowrap"> :(</span>
       </H1>
@@ -20,7 +21,7 @@ const NoWinnersCard = ({ onGoToAssessment }: NoWinnersCardProps) => (
         onClick={onGoToAssessment}
         className="mt-20 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
       >
-        <i className="fas fa-arrow-right mr-2"></i> Go to Assessment
+        <FaArrowRight className="mr-2" /> Go to Assessment
       </button>
     </div>
   </section>

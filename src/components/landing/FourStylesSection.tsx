@@ -8,16 +8,16 @@ const FourStylesSection = () => (
     </H2>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {(Object.keys(styleMeta) as StyleKey[]).map((key) => {
-        const card = styleMeta[key];
+        const { icon: Icon, label, bg, color, title, desc } = styleMeta[key];
         return (
-          <Card key={card.label}>
+          <Card key={label}>
             <div className="text-center mb-4">
-              <div className={`${card.bg} inline-flex p-4 rounded-full`}>
-                <i className={card.icon + ' text-2xl'}></i>
+              <div className={`${bg} inline-flex p-4 rounded-full`}>
+                <Icon className={color + ' text-2xl'} />
               </div>
             </div>
-            <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{card.title}</h3>
-            <p className="text-gray-600 text-sm">{card.desc}</p>
+            <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{title}</h3>
+            <p className="text-gray-600 text-sm">{desc}</p>
           </Card>
         );
       })}

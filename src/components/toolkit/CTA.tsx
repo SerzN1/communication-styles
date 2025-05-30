@@ -1,5 +1,6 @@
 import { ComponentChildren, JSX } from 'preact';
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa6';
 
 interface CTAProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   to?: string;
@@ -16,7 +17,7 @@ const CTA = ({ to = '/assessment', children, className = '', ...props }: CTAProp
         {...props}
       >
         {children}
-        <i className="fas fa-arrow-right ml-2 text-xl"></i>
+        <FaArrowRight className="ml-2 text-xl" />
       </button>
     </Link>
   </div>

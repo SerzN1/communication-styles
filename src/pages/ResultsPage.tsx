@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'preact/hooks';
+import { FaDownload, FaRotateRight } from 'react-icons/fa6';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BreakdownTable from '../components/results/BreakdownTable';
 import MultiWinnersCard from '../components/results/MultiWinnersCard';
@@ -89,7 +90,7 @@ const ResultsPage = () => {
           aria-label="Retake Assessment"
           type="button"
         >
-          <i className="fas fa-redo mr-2" aria-hidden="true"></i>
+          <FaRotateRight className="mr-2 inline align-baseline" aria-hidden="true" />
           <span className="inline sm:hidden">Retry</span>
           <span className="hidden sm:inline">Retake Assessment</span>
         </button>
@@ -99,7 +100,7 @@ const ResultsPage = () => {
           aria-label="Download Results as Text File"
           type="button"
         >
-          <i className="fas fa-download mr-2" aria-hidden="true"></i>
+          <FaDownload className="mr-2 inline align-baseline" aria-hidden="true" />
           <span className="inline sm:hidden">Download</span>
           <span className="hidden sm:inline">Download Results</span>
         </button>
