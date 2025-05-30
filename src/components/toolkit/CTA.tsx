@@ -1,10 +1,9 @@
+import { ComponentChildren, JSX } from 'preact';
 import { Link } from 'react-router-dom';
 
-import { ButtonHTMLAttributes, ReactNode } from 'react';
-
-interface CTAProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface CTAProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   to?: string;
-  children: ReactNode;
+  children: ComponentChildren;
   className?: string;
 }
 

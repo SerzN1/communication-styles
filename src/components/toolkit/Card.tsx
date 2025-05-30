@@ -1,11 +1,11 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import { ComponentChildren, JSX } from 'preact';
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
   className?: string;
-  children?: ReactNode;
+  children?: ComponentChildren;
 }
 
-const Card: React.FC<CardProps> = ({ className = '', children, ...props }) => (
+const Card = ({ className = '', children, ...props }: CardProps) => (
   <div className={`style-card bg-white p-6 rounded-xl shadow-md ${className}`} {...props}>
     {children}
   </div>

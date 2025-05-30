@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, FormEvent } from 'react';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
@@ -71,7 +71,7 @@ const AssessmentPage = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     if (answers.size === 0) return;
     const resultObj = { answers: Array.from(answers) };
