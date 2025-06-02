@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'preact';
 import { Card, CardTitle } from '../toolkit';
 
 /* SEO SUGGESTIONS:
@@ -6,7 +7,7 @@ import { Card, CardTitle } from '../toolkit';
  - Add a call to action with "start your free communication assessment now".
 */
 
-const IntroCardsSection = () => (
+const IntroCardsSection: FunctionComponent = () => (
   <section className="mb-10">
     <Card>
       <CardTitle>Why Communication Styles Matter</CardTitle>

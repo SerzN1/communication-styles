@@ -1,11 +1,13 @@
+import type { FunctionComponent } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { FaArrowLeft, FaArrowRight, FaCircleCheck, FaCommentDots, FaPaperPlane } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
-import { assessementData, StyleKey, styleMeta } from '../data/assessment';
+import { assessementData, styleMeta } from '../data/assessment';
 import { useScrollToTop } from '../hooks';
+import type { StyleKey } from '../types';
 import { shuffleArray } from '../utils';
 
 function scrollToAssessmentCard() {
@@ -15,18 +17,18 @@ function scrollToAssessmentCard() {
   }, 0);
 }
 
-const AssessmentPage = () => {
+const AssessmentPage: FunctionComponent = () => {
   useScrollToTop();
 
   const storedData = getStoredData();
-  const [mode, setMode] = useState(() => storedData.mode);
-  const [step, setStep] = useState(() => storedData.step);
-  const [answers, setAnswers] = useState(() => storedData.answers);
+  const [mode, setMode] = useState<string>(() => storedData.mode);
+  const [step, setStep] = useState<number>(() => storedData.step);
+  const [answers, setAnswers] = useState<Set<string>>(() => storedData.answers);
   const navigate = useNavigate();
 
   const total = assessementData.length;
   const percent = Math.round((step / total) * 100);
-  const { category = '', description = '', options = [] } = assessementData[step] || {};
+  const { category = '', description = '', options = [] } = assessementData[step] ?? {};
   const shuffledOptions = useMemo(() => shuffleArray(options), [options]);
 
   // Persist intermediate state
@@ -92,7 +94,7 @@ const AssessmentPage = () => {
 
   const handleShowResults = () => {
     const stored = localStorage.getItem('sn-assessmentResults');
-    if (stored) {
+    if (stored !== null) {
       const parsed = JSON.parse(stored);
       navigate('/results', { state: { answers: parsed.answers } });
     }

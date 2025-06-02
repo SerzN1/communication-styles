@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'preact';
 import {
   FaBolt,
   FaBook,
@@ -73,7 +74,7 @@ const styleCards = [
   },
 ];
 
-const FourDimensionsSection = () => (
+const FourDimensionsSection: FunctionComponent = () => (
   <section className="w-full mb-10">
     <div className="mb-10">
       <H2 className="text-4xl">

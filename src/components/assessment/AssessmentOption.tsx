@@ -1,14 +1,16 @@
+import type { FunctionComponent } from 'preact';
 import { FaCheck } from 'react-icons/fa6';
+import { StyleKey } from '../../types';
 
 interface AssessmentOptionProps {
   id: string;
   checked: boolean;
   onChange: (e: Event) => void;
-  color: string;
+  color: string | StyleKey;
   option: string;
 }
 
-export default function AssessmentOption({ id, checked, onChange, color, option }: AssessmentOptionProps) {
+const AssessmentOption: FunctionComponent<AssessmentOptionProps> = ({ id, checked, onChange, color, option }) => {
   return (
     <div className="flex items-center gap-4">
       <input
@@ -54,4 +56,6 @@ export default function AssessmentOption({ id, checked, onChange, color, option 
       </label>
     </div>
   );
-}
+};
+
+export default AssessmentOption;

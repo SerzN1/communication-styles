@@ -1,13 +1,16 @@
-import { StyleKey, styleMeta } from '../../data/assessment';
+import { styleMeta } from '../../data/assessment';
+import { StyleKey } from '../../types';
 import { Card, H2 } from '../toolkit';
 
-const FourStylesSection = () => (
+import type { FunctionComponent } from 'preact';
+
+const FourStylesSection: FunctionComponent = () => (
   <section className="mb-20">
     <H2 className="text-4xl mb-10">
       The Four Main <span className="text-blue-600">Communication Styles</span>
     </H2>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-      {(Object.keys(styleMeta) as StyleKey[]).map((key) => {
+      {(Object.keys(styleMeta) as StyleKey[]).map((key: StyleKey) => {
         const { icon: Icon, label, bg, color, title, desc } = styleMeta[key];
         return (
           <Card key={label}>

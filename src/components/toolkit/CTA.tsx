@@ -1,6 +1,6 @@
-import { ComponentChildren, JSX } from 'preact';
-import { Link } from 'react-router-dom';
+import { ComponentChildren, FunctionComponent, JSX } from 'preact';
 import { FaArrowRight } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 interface CTAProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   to?: string;
@@ -8,7 +8,7 @@ interface CTAProps extends JSX.HTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const CTA = ({ to = '/assessment', children, className = '', ...props }: CTAProps) => (
+const CTA: FunctionComponent<CTAProps> = ({ to = '/assessment', children, className = '', ...props }) => (
   <div className={'text-center mb-20 ' + className}>
     <Link to={to}>
       <button

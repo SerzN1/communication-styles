@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'preact';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
@@ -8,7 +9,7 @@ import ResultsPage from './pages/ResultsPage';
 
 import './App.css';
 
-function App() {
+const App: FunctionComponent = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL || '/'}>
       <div className="bg-gray-50 font-sans">
@@ -26,6 +27,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

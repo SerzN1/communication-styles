@@ -1,3 +1,4 @@
+import type { FunctionComponent } from 'preact';
 import { FaArrowRight, FaMicroscope } from 'react-icons/fa6';
 import { H1 } from '../toolkit';
 
@@ -5,7 +6,7 @@ interface NoWinnersCardProps {
   onGoToAssessment: () => void;
 }
 
-const NoWinnersCard = ({ onGoToAssessment }: NoWinnersCardProps) => (
+const NoWinnersCard: FunctionComponent<NoWinnersCardProps> = ({ onGoToAssessment }) => (
   <section id="results" className="page">
     <div className="text-center mb-12">
       <H1 className="mb-12">

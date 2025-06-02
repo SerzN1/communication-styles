@@ -1,8 +1,10 @@
+import type { FunctionComponent } from 'preact';
+
 interface HighlightsProps {
   className?: string;
 }
 
-const Highlights = ({ className = '' }: HighlightsProps) => (
+const Highlights: FunctionComponent<HighlightsProps> = ({ className = '' }) => (
   <div className={`flex justify-center gap-8 my-8 sm:my-12 ${className}`}>
     <div className="text-center">
       <div className="text-2xl sm:text-4xl font-bold text-yellow-500">4</div>

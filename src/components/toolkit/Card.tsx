@@ -1,11 +1,11 @@
-import { ComponentChildren, JSX } from 'preact';
+import { ComponentChildren, FunctionComponent, JSX } from 'preact';
 
 interface CardProps extends JSX.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: ComponentChildren;
 }
 
-const Card = ({ className = '', children, ...props }: CardProps) => (
+const Card: FunctionComponent<CardProps> = ({ className = '', children, ...props }) => (
   <div className={`style-card bg-white p-6 rounded-xl shadow-md ${className}`} {...props}>
     {children}
   </div>

@@ -1,4 +1,4 @@
-import { StyleKey } from './data/assessment';
+import { StyleKey } from './types';
 
 export function getStylePercentage(scores: Record<StyleKey, number>, style: StyleKey): number {
   const total = Object.values(scores).reduce((a, b) => a + b, 0);

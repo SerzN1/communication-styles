@@ -1,17 +1,5 @@
-import { IconType } from 'react-icons';
 import { FaChartLine, FaGaugeHigh, FaHandshakeAngle, FaLightbulb } from 'react-icons/fa6';
-
-export type StyleKey = 'blue' | 'red' | 'green' | 'yellow';
-
-export interface StyleMeta {
-  color: string;
-  label: string;
-  accent: string;
-  icon: IconType;
-  bg: string;
-  title: string;
-  desc: string;
-}
+import type { AssessmentCategory, StyleKey, StyleMeta } from '../types';
 
 export const styleMeta: Record<StyleKey, StyleMeta> = {
   blue: {
@@ -51,17 +39,6 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
     desc: 'Enthusiastic, creative, and outgoing. Expressives are big-picture thinkers who enjoy brainstorming and social interaction.',
   },
 };
-
-export interface AssessmentOption {
-  color: StyleKey;
-  option: string;
-}
-
-export interface AssessmentCategory {
-  category: string;
-  description: string;
-  options: AssessmentOption[];
-}
 
 export const assessementData: AssessmentCategory[] = [
   {

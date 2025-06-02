@@ -1,7 +1,8 @@
+import type { FunctionComponent } from 'preact';
 import { CTA } from '../toolkit';
 import Highlights from './Highlights';
 
-const HeroSection = () => (
+const HeroSection: FunctionComponent = () => (
   <section className="page max-w-5xl mx-auto active fade-in mb-6">
     <h1 className="text-center text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
       Discover Your <span className="text-blue-600 sm:text-nowrap">Communication Style</span>
