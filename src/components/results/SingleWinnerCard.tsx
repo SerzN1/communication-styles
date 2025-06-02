@@ -1,13 +1,15 @@
+import { FunctionalComponent } from 'preact';
 import { FaUserMd } from 'react-icons/fa';
 import { FaEyeSlash, FaHandFist, FaLightbulb, FaUser, FaUsers } from 'react-icons/fa6';
-import { styleInfo, StyleKey, styleMeta } from '../../data/assessment';
+import { styleInfo, styleMeta } from '../../data/assessment';
+import type { StyleKey } from '../../types';
 import { Card, CardTitle, H1 } from '../toolkit';
 
 interface SingleWinnerCardProps {
   winner: StyleKey;
 }
 
-const SingleWinnerCard = ({ winner }: SingleWinnerCardProps) => {
+const SingleWinnerCard: FunctionalComponent<SingleWinnerCardProps> = ({ winner }) => {
   const { icon, color, label } = styleMeta[winner] || {};
   const Icon = icon;
   const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};

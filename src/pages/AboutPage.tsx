@@ -2,8 +2,9 @@ import { FaHouse } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { Card, CardTitle, H1, H3 } from '../components/toolkit';
 import { useScrollToTop } from '../hooks';
+import { FunctionComponent } from 'preact';
 
-const AboutPage = () => {
+const AboutPage: FunctionComponent = () => {
   useScrollToTop();
 
   return (

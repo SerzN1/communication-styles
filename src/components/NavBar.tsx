@@ -1,8 +1,9 @@
+import { FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 import { FaBars, FaComments } from 'react-icons/fa6';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar: FunctionComponent = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const isActivePath = (path: string) => location.pathname === path;

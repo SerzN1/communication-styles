@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'preact';
 import { useEffect, useMemo } from 'preact/hooks';
 import { FaDownload, FaRotateRight } from 'react-icons/fa6';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -8,36 +9,36 @@ import SingleWinnerCard from '../components/results/SingleWinnerCard';
 import { formatMultiWinnersText, formatSingleWinnerText, getScores, getWinners } from '../components/results/utils';
 import { useScrollToTop } from '../hooks';
 
-const ResultsPage = () => {
+interface AnswersState {
+  answers: string[];
+}
+
+const ResultsPage: FunctionComponent = () => {
   useScrollToTop();
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const answers = useMemo(() => {
-    if (location.state?.answers) return location.state.answers;
+  const answers: string[] = useMemo(() => {
+    const answers = (location.state as AnswersState)?.answers;
+    if (Array.isArray(answers)) return answers;
+
     const stored = localStorage.getItem('sn-assessmentResults');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        return parsed.answers || {};
-      } catch {
-        return {};
-      }
+    if (stored === null) return [];
+
+    try {
+      const parsed = JSON.parse(stored) as AnswersState;
+      return parsed.answers || [];
+    } catch {
+      return [];
     }
-    return {};
   }, [location.state]);
 
   const scores = getScores(answers);
   const winners = getWinners(scores);
 
   useEffect(() => {
-    if (
-      (!answers ||
-        (Array.isArray(answers) && answers.length === 0) ||
-        (typeof answers === 'object' && Object.keys(answers).length === 0)) &&
-      winners.length === 0
-    ) {
+    if (!Array.isArray(answers) || answers.length === 0 || winners.length === 0) {
       localStorage.removeItem('sn-assessmentResults');
       navigate('/assessment', { replace: true });
     }

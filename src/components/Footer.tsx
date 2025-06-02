@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'preact';
 import { FaFacebookF, FaInstagram, FaInternetExplorer, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-const Footer = () => (
+const Footer: FunctionComponent = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 sm:px-6 lg:px-8">
     <div className="max-w-6xl mx-auto">
       <div className="grid md:grid-cols-4 gap-8">

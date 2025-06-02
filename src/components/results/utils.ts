@@ -1,6 +1,7 @@
-import { multiWinnersInfo, styleInfo, StyleKey, styleMeta } from '../../data/assessment';
+import { multiWinnersInfo, styleInfo, styleMeta } from '../../data/assessment';
+import type { StyleKey } from '../../types';
 
-export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, number>) {
+export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, number>): string {
   const meta = styleMeta[winner];
   const info = styleInfo[winner];
   return [
@@ -39,7 +40,7 @@ export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, 
   ].join('\n');
 }
 
-export function formatMultiWinnersText(winners: StyleKey[], scores: Record<string, number>) {
+export function formatMultiWinnersText(winners: StyleKey[], scores: Record<string, number>): string {
   let text = ['You Have a Balanced Communication Style', '', ...multiWinnersInfo.intro, ''];
   winners.forEach((style) => {
     const meta = styleMeta[style];
@@ -89,15 +90,14 @@ export function getWinners(scores: Record<StyleKey, number>): StyleKey[] {
 }
 
 export function getScores(answers: string[] | Record<string, unknown>): Record<StyleKey, number> {
-  const scores: Record<string, number> = { yellow: 0, red: 0, green: 0, blue: 0 };
+  const scores: Record<StyleKey, number> = { yellow: 0, red: 0, green: 0, blue: 0 };
   const countColors = (key: string) => {
-    let [, color] = key.split('|');
-    if (scores[color] !== undefined) scores[color]++;
+    const [, color] = key.split('|');
+    const c = color as StyleKey;
+    if (scores[c] !== undefined) scores[c]++;
   };
   if (Array.isArray(answers)) {
     answers.forEach(countColors);
-  } else if (typeof answers === 'object' && answers !== null) {
-    Object.keys(answers).forEach(countColors);
   }
   return scores;
 }

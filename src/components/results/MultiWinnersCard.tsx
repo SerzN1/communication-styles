@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'preact';
 import { FaLayerGroup, FaRotate, FaUserDoctor } from 'react-icons/fa6';
 import { multiWinnersInfo, styleInfo, styleMeta } from '../../data/assessment';
-import { StyleKey } from '../../types';
+import type { StyleKey } from '../../types';
 import { Card, CardTitle, H1 } from '../toolkit';
 
 interface MultiWinnersCardProps {
@@ -56,7 +56,9 @@ const MultiWinnersCard: FunctionComponent<MultiWinnersCardProps> = ({ winners })
           Adapting Your Communication
         </CardTitle>
         <ul className="space-y-2 text-gray-700">
-          {winners.map((style: StyleKey) => styleInfo[style].adapting.map((tip: string, i: number) => <li key={style + i}>• {tip}</li>))}
+          {winners.map((style: StyleKey) =>
+            styleInfo[style].adapting.map((tip: string, i: number) => <li key={style + i}>• {tip}</li>),
+          )}
         </ul>
       </Card>
       <Card className="!bg-yellow-50">

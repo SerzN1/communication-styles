@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'preact';
 import {
   FinalCTASection,
   FourDimensionsSection,
@@ -9,7 +10,7 @@ import {
 import { CTA } from '../components/toolkit';
 import { useScrollToTop } from '../hooks';
 
-const LandingPage = () => {
+const LandingPage: FunctionComponent = () => {
   useScrollToTop();
 
   return (

@@ -15,7 +15,7 @@ const Highlights: FunctionComponent<HighlightsProps> = ({ className = '' }) => (
       <div className="text-xs sm:text-base text-gray-600 uppercase tracking-wider">Accuracy</div>
     </div>
     <div className="text-center">
-      <div className="text-2xl sm:text-4xl font-bold text-green-600">5min</div>
+      <div className="text-2xl sm:text-4xl font-bold text-green-600 text-nowrap">5 min</div>
       <div className="text-xs sm:text-base text-gray-600 uppercase tracking-wider">Quick Assessment</div>
     </div>
   </div>
