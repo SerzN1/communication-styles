@@ -42,9 +42,9 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
 
 export const assessementData: AssessmentCategory[] = [
   {
-    category: 'Verbal dimention',
+    category: 'Verbal Dimension',
     description:
-      'Verbal is connected to what you say, the way you express yourself. It is how we talk, write, listen, and read.',
+      'At work, how do you express yourself with words? Consider your natural tendencies when speaking, writing, listening, and reading in professional settings. For each item, ask yourself: “Does this reflect how I communicate at work?”',
     options: [
       { color: 'yellow', option: 'Decisive' },
       { color: 'yellow', option: 'Direct speech' },
@@ -60,15 +60,16 @@ export const assessementData: AssessmentCategory[] = [
     ],
   },
   {
-    category: 'Paraverbal dimention',
-    description: 'Paraverbal is how you say things, the way you talk. It is about tone, speed, and inflection.',
+    category: 'Paraverbal Dimension',
+    description:
+      'At work, how do you deliver your message—tone, speed, and inflection? Think about your typical speaking style in workplace conversations. Select the options that best match how you communicate at work.',
     options: [
       { color: 'yellow', option: 'Speaks quickly' },
-      { color: 'yellow', option: 'Speaks loudly' },
+      { color: 'yellow', option: 'Speaks loudly and energetically' },
       { color: 'yellow', option: 'Formal speech' },
       { color: 'red', option: 'Lots of voice inflection' },
       { color: 'red', option: 'Energetic' },
-      { color: 'red', option: 'Speaks loudly' },
+      { color: 'red', option: 'Speaks loudly and assertively' },
       { color: 'green', option: 'Speaks slowly' },
       { color: 'green', option: 'Soft tones' },
       { color: 'green', option: 'Patient speech' },
@@ -78,9 +79,9 @@ export const assessementData: AssessmentCategory[] = [
     ],
   },
   {
-    category: 'Body language dimention',
+    category: 'Body Language Dimension',
     description:
-      'Body language is how you express yourself without words. Examples are eye contact, body contact, movements, and facial expressions.',
+      'At work, how do you communicate without words—through eye contact, gestures, and facial expressions? Focus on your non-verbal habits in professional environments. Choose the descriptors that fit your workplace behavior.',
     options: [
       { color: 'yellow', option: 'Direct eye contact' },
       { color: 'yellow', option: 'Firm handshake' },
@@ -97,9 +98,9 @@ export const assessementData: AssessmentCategory[] = [
     ],
   },
   {
-    category: 'Personal space dimention',
+    category: 'Personal Space Dimension',
     description:
-      'Personal space is how you like the space around you – either sitting at your desk, working on the floor, or talking with others.',
+      'At work, how do you manage your environment and personal space? Consider your preferences for workspace setup, proximity to others, and personal items in a professional context.',
     options: [
       { color: 'yellow', option: 'Keeps physical distance' },
       { color: 'yellow', option: 'Displays calendars in workspace' },

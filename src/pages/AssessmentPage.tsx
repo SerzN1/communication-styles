@@ -149,9 +149,14 @@ const AssessmentPage: FunctionComponent = () => {
           <div className="text-center py-8" id="intro-screen">
             <FaCommentDots className="text-blue-500 text-5xl mb-6 block mx-auto" />
             <h2 className="text-xl font-bold text-gray-800 mb-4">Ready to Discover Your Communication Style?</h2>
-            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+            <p className="text-gray-600 mb-4 max-w-lg mx-auto">
               This assessment consists of {total} sections representing different communication dimentions. There are no
-              right or wrong answers - just select the option that best describes your natural tendencies.
+              right or wrong answers—just select the option that best describes your natural tendencies.
+            </p>
+            <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+              For each item, think about how you typically act at work. For example: “I am marking the items below that
+              reflect who I am, at work—such as, I give a firm handshake.” Focus on your workplace behavior, not how you
+              might act at home or in social settings.
             </p>
             <button
               onClick={handleStart}
