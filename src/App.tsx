@@ -1,3 +1,4 @@
+import GDPRNotice from './components/GDPRNotice';
 import type { FunctionComponent } from 'preact';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ const App: FunctionComponent = () => {
           </Routes>
         </main>
         <Footer />
+        <GDPRNotice />
       </div>
     </BrowserRouter>
   );
