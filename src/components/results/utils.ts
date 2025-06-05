@@ -5,7 +5,7 @@ export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, 
   const meta = styleMeta[winner];
   const info = styleInfo[winner];
   return [
-    `Your Dominant Style: ${meta.label}`,
+    `Your Merrill-Reid Social Style: ${meta.name}`,
     '',
     'Description:',
     info.description,
@@ -33,7 +33,7 @@ export function formatSingleWinnerText(winner: StyleKey, scores: Record<string, 
       .sort((a, b) => scores[b] - scores[a])
       .map(
         (style) =>
-          `${styleMeta[style].label}: ${scores[style]} (${
+          `${styleMeta[style].name}: ${scores[style]} (${
             scores[style] > 0 ? Math.round((scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100) : 0
           }%)`,
       ),
@@ -46,10 +46,10 @@ export function formatMultiWinnersText(winners: StyleKey[], scores: Record<strin
     const meta = styleMeta[style];
     const info = styleInfo[style];
     text.push(
-      `When ${meta.label} Style Shines:`,
+      `When ${meta.name} Style Shines:`,
       ...info.strengths.map((s: string) => `- ${s}`),
       '',
-      `How ${meta.label} might be perceived:`,
+      `How ${meta.name} might be perceived:`,
       info.othersView,
       '',
       "Psychologist's Recommendation:",
@@ -69,7 +69,7 @@ export function formatMultiWinnersText(winners: StyleKey[], scores: Record<strin
       .sort((a, b) => scores[b] - scores[a])
       .map(
         (style) =>
-          `${styleMeta[style].label}: ${scores[style]} (${
+          `${styleMeta[style].name}: ${scores[style]} (${
             scores[style] > 0 ? Math.round((scores[style] / Object.values(scores).reduce((a, b) => a + b, 0)) * 100) : 0
           }%)`,
       ),

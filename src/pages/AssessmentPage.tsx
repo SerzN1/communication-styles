@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import AssessmentOption from '../components/assessment/AssessmentOption';
 import { getStoredData } from '../components/assessment/utils';
 import { Card, CardTitle, H1 } from '../components/toolkit';
-import { assessementData, styleMeta } from '../data/assessment';
+import { assessmentData, styleMeta } from '../data/assessment';
 import { useScrollToTop } from '../hooks';
 import type { StyleKey } from '../types';
 import { shuffleArray } from '../utils';
@@ -26,9 +26,9 @@ const AssessmentPage: FunctionComponent = () => {
   const [answers, setAnswers] = useState<Set<string>>(() => storedData.answers);
   const navigate = useNavigate();
 
-  const total = assessementData.length;
+  const total = assessmentData.length;
   const percent = Math.round((step / total) * 100);
-  const { category = '', description = '', options = [] } = assessementData[step] ?? {};
+  const { category = '', description = '', options = [] } = assessmentData[step] ?? {};
   const shuffledOptions = useMemo(() => shuffleArray(options), [options]);
 
   // Persist intermediate state

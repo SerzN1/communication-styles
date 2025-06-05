@@ -24,14 +24,14 @@ const MultiWinnersCard: FunctionComponent<MultiWinnersCardProps> = ({ winners })
     </div>
     <div className="mt-12 grid md:grid-cols-2 gap-8 text-left">
       {winners.map((style: StyleKey) => {
-        const { icon: Icon, label, color } = styleMeta[style];
+        const { icon: Icon, name, color } = styleMeta[style];
         const { strengths, othersView } = styleInfo[style];
 
         return (
           <Card key={style}>
             <CardTitle>
-              <Icon className={color + ' mr-2'} />
-              When <span className={color}>{label}</span> Style Shines
+              <Icon className={color + ' mr-2 inline'} />
+              When <span className={color}>{name}</span> Style Shines
             </CardTitle>
             <ul className="space-y-2 text-gray-600">
               {strengths.map((s: string, i: number) => (
@@ -40,8 +40,8 @@ const MultiWinnersCard: FunctionComponent<MultiWinnersCardProps> = ({ winners })
             </ul>
             <div className="mt-8">
               <CardTitle>
-                <Icon className={color + ' mr-2'} />
-                How <span className={color}>{label}</span> might be perceived
+                <Icon className={color + ' mr-2 inline'} />
+                How <span className={color}>{name}</span> might be perceived
               </CardTitle>
               <ul className="space-y-2 text-gray-600 mt-2">
                 <li>{othersView}</li>

@@ -11,15 +11,15 @@ const FourStylesSection: FunctionComponent = () => (
     </H2>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {(Object.keys(styleMeta) as StyleKey[]).map((key: StyleKey) => {
-        const { icon: Icon, label, bg, color, title, desc } = styleMeta[key];
+        const { icon: Icon, name, bg, color, desc } = styleMeta[key];
         return (
-          <Card key={label}>
+          <Card key={name}>
             <div className="text-center mb-4">
               <div className={`${bg} inline-flex p-4 rounded-full`}>
                 <Icon className={color + ' text-2xl'} />
               </div>
             </div>
-            <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{title}</h3>
+            <h3 className="text-lg font-semibold text-center text-gray-800 mb-2">{name}</h3>
             <p className="text-gray-600 text-sm">{desc}</p>
           </Card>
         );

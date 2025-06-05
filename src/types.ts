@@ -4,7 +4,10 @@ export type StyleKey = 'blue' | 'red' | 'green' | 'yellow';
 
 export interface StyleMeta {
   color: string;
-  label: string;
+  /**
+   * Merrill-Reid official style name
+   */
+  name: string;
   accent: string;
   icon: IconType;
   bg: string;

@@ -8,7 +8,8 @@ const HeroSection: FunctionComponent = () => (
       Discover Your <span className="text-blue-600 sm:text-nowrap">Communication Style</span>
     </h1>
     <p className="text-center mt-5 max-w-xl mx-auto text-xl text-gray-500">
-      Understand how you communicate and how to adapt to others' styles for better relationships.
+      Understand how you communicate and how to effectively communicate for better relationships in business and in
+      life.
     </p>
     <Highlights className="my-12" />
     <CTA className="!mb-0">Start the Assessment</CTA>

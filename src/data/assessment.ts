@@ -4,7 +4,7 @@ import type { AssessmentCategory, StyleKey, StyleMeta } from '../types';
 export const styleMeta: Record<StyleKey, StyleMeta> = {
   blue: {
     color: 'text-blue-600',
-    label: 'Blue',
+    name: 'Analytical',
     accent: '#3b82f6',
     icon: FaChartLine,
     bg: 'bg-blue-100',
@@ -13,7 +13,7 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
   },
   red: {
     color: 'text-red-600',
-    label: 'Red',
+    name: 'Driver',
     accent: '#ef4444',
     icon: FaGaugeHigh,
     bg: 'bg-red-100',
@@ -22,7 +22,7 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
   },
   green: {
     color: 'text-green-600',
-    label: 'Green',
+    name: 'Amiable',
     accent: '#22c55e',
     icon: FaHandshakeAngle,
     bg: 'bg-green-100',
@@ -31,7 +31,7 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
   },
   yellow: {
     color: 'text-yellow-600',
-    label: 'Yellow',
+    name: 'Expressive',
     accent: '#facc15',
     icon: FaLightbulb,
     bg: 'bg-yellow-100',
@@ -40,7 +40,7 @@ export const styleMeta: Record<StyleKey, StyleMeta> = {
   },
 };
 
-export const assessementData: AssessmentCategory[] = [
+export const assessmentData: AssessmentCategory[] = [
   {
     category: 'Verbal Dimension',
     description:
@@ -166,37 +166,37 @@ export const styleInfo: Record<
   },
   red: {
     description:
-      'You bring passion and energy to your communication. You inspire and motivate others, and you’re comfortable sharing your feelings. Your optimism is contagious, but you may sometimes overlook details or talk over others. You value connection and enjoy working with people.',
+      'You are decisive, direct, and results-oriented. You focus on efficiency and outcomes, and you are comfortable taking charge of situations. Your drive helps you achieve goals, but you may sometimes overlook others’ feelings or input.',
     strengths: [
-      'Inspires and motivates others',
-      'Expresses feelings openly',
-      'Optimistic and enthusiastic',
-      'Builds strong relationships',
-      'Enjoys teamwork',
+      'Makes decisions quickly',
+      'Takes charge and leads',
+      'Focuses on results and goals',
+      'Acts confidently and directly',
+      'Drives projects forward',
     ],
     blindSpots: [
-      'May overlook details',
-      'Can dominate conversations',
-      'Sometimes interrupts others',
-      'May be overly optimistic',
+      'May be impatient or blunt',
+      'Can overlook others’ feelings',
+      'Sometimes too focused on tasks',
+      'May not seek input from others',
     ],
     tips: [
-      'Pay attention to details',
-      'Let others share their ideas',
-      'Balance optimism with realism',
-      'Practice active listening',
+      'Practice patience and active listening',
+      'Invite input from your team',
+      'Show appreciation for others’ contributions',
+      'Balance speed with collaboration',
     ],
     selfView:
-      'Sees oneself as a passionate communicator who values connection and teamwork. Enjoys sharing ideas and motivating others.',
+      'Sees oneself as a confident, results-driven leader who values efficiency and directness. Enjoys achieving goals and moving projects forward.',
     othersView:
-      'Viewed as enthusiastic and supportive. Others appreciate your energy, but may wish for more focus on details and shared airtime.',
+      'Viewed as a strong leader who gets things done. Others may sometimes find you too forceful or not sensitive enough to their perspectives.',
     adapting: [
-      'Give space for quieter voices.',
-      'Double-check details before acting.',
-      'Encourage input from all team members.',
+      'Slow down and listen to others’ ideas.',
+      'Show empathy and acknowledge feelings.',
+      'Involve others in decision-making.',
     ],
     recommendation:
-      'Channel your passion to inspire, but remember to listen and check details. Your energy is valuable—use it to build strong, balanced teams.',
+      'Use your drive to achieve results, but remember that success comes through people. Balance your directness with empathy and collaboration to build stronger teams.',
   },
   green: {
     description:

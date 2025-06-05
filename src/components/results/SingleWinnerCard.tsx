@@ -10,14 +10,14 @@ interface SingleWinnerCardProps {
 }
 
 const SingleWinnerCard: FunctionalComponent<SingleWinnerCardProps> = ({ winner }) => {
-  const { icon, color, label } = styleMeta[winner] || {};
+  const { icon, color, name } = styleMeta[winner] || {};
   const Icon = icon;
   const { description, strengths, blindSpots, tips, recommendation, selfView, othersView } = styleInfo[winner] || {};
   return (
     <div className="text-center mb-12">
       <H1 className="mb-12">
         <Icon className={`block text-7xl mb-12 m-auto ${color}`} />
-        Your Dominant Style: <span className={color}>{label}</span>
+        Your Merrill-Reid Social Style: <span className={color}>{name}</span>
       </H1>
       <p className="mt-3 max-w-2xl mx-auto text-base text-gray-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
         {description}

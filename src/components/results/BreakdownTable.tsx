@@ -25,7 +25,9 @@ const BreakdownTable: FunctionalComponent<BreakdownTableProps> = ({ scores }) =>
             .sort((a, b) => scores[b] - scores[a])
             .map((style) => (
               <tr key={style}>
-                <td className={`py-3 px-4 capitalize font-semibold ${styleMeta[style].color}`}>{style}</td>
+                <td className={`py-3 px-4 capitalize font-semibold ${styleMeta[style].color}`}>
+                  {styleMeta[style].name}
+                </td>
                 <td className="py-3 px-4">{scores[style]}</td>
                 <td className="py-3 px-4">{getStylePercentage(scores, style)}%</td>
               </tr>

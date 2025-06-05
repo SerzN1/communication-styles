@@ -1,8 +1,8 @@
+import { FunctionComponent } from 'preact';
 import { FaHouse } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { Card, CardTitle, H1, H3 } from '../components/toolkit';
 import { useScrollToTop } from '../hooks';
-import { FunctionComponent } from 'preact';
 
 const AboutPage: FunctionComponent = () => {
   useScrollToTop();
@@ -37,10 +37,16 @@ const AboutPage: FunctionComponent = () => {
         <Card className="lg:p-8">
           <CardTitle>The Science Behind It</CardTitle>
           <p className="text-gray-600 mb-4">
-            Our <strong>communication style assessment</strong> is based on the widely recognized four-style
-            communication model, building on the work of psychologists like Carl Jung and William Moulton Marston. This
-            model has been adapted and refined through decades of practical application in business and counseling
-            settings.
+            Our <strong>communication style assessment</strong> is inspired by the{' '}
+            <strong>Merrill-Reid Social Styles framework</strong>, a widely recognized four-style model based on
+            observable workplace behaviors. While our assessment uses four communication dimensions to help you discover
+            your dominant style, the original Merrill-Reid model focuses on social behaviors along the axes of
+            assertiveness and responsiveness.
+          </p>
+          <p className="text-gray-600 mb-4">
+            The assessment adapts these principles for practical use, drawing on research from psychology, communication
+            theory, and organizational behavior. Our approach is designed to make the Merrill-Reid styles accessible and
+            actionable for modern workplace communication.
           </p>
           <p className="text-gray-600">
             While no personality or communication assessment can capture the full complexity of human behavior, research
